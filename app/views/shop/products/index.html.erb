@@ -1,0 +1,28 @@
+<div class = "container">
+  <div class = "row">
+    <% @products.each do |product| %>
+    <div class = "col-6">
+      <table class = "table">
+        <tr>
+          <th><%= link_to edit_shop_product_path(product.id) do %>
+          <%= image_tag product.image, size: "400x400" %>
+          <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <th><%=  product.name %></th>
+        </tr>
+        <tr>
+          <th>商品価格(税込)</th>
+          <th><%= product.price %></th>
+        </tr>
+        <tr>
+          <th>ジャンル名</th>
+          <th><%= product.genre_id %></th>
+        </tr>
+      </table>
+    </div>
+    <% end %>
+  </div>
+</div>

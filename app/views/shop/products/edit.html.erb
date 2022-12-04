@@ -1,0 +1,15 @@
+<%= form_with model: @product, url: shop_product_path(@product.id) do |f| %>
+<%= image_tag @product.image, size: "400x400" %>
+<%= f.label :image, '商品名' %>
+<%= f.file_field :image, accept: "image/*", required: true %>
+<%= f.label :name, '商品名' %>
+<%= f.text_field :name, placeholder: "商品名", required: true, size: "44" %>
+<%= f.label :introduction, '商品説明' %>
+<%= f.text_field :introduction, placeholder: "商品名", required: true, size: "44" %>
+<%= f.label :price, '商品価格(税込)' %>
+<%= f.text_field :price, placeholder: "商品名", required: true, size: "44" %>
+<%= f.label :genre_id, 'ジャンルid' %>
+<%= f.text_field :genre_id, placeholder: "商品名", required: true, size: "44" %>
+<%= f.hidden_field :shop_id, :value => current_shop.id %>
+<%= f.submit '変更を保存', class: "btn btn-success" %>
+<% end %>
