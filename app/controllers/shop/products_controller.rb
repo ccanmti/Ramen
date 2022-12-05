@@ -27,7 +27,7 @@ class Shop::ProductsController < ApplicationController
     @product = Product.new
     @product = Product.new(product_params)
     @product.save!
-    redirect_to
+    redirect_to shop_products_path
   end
 
   private

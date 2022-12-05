@@ -37,5 +37,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to =>"homes#top"
     get "about"=>"homes#about"
+    resources :shops,  only: [:index,:show]
+    resources :products,  only: [:index,:show]
   end
 end

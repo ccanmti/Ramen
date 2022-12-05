@@ -2,6 +2,7 @@
   <div class="container mb-5">
       <div class="row">
         <div class='col-md-2'>
+          <%= link_to "LOGO", root_path %>
         </div>
       <% if customer_signed_in? %>
       <div class= "col-3 d-flex align-items-center">
@@ -19,7 +20,6 @@
       <div class='col-md-6 offset-md-4 pull-right d-flex align-items-center'>
         <div class="text-right">
           <button type="button" class="btn btn-light"><%= link_to '店舗の新規登録',new_shop_registration_path, class: "text-dark" %></button>
-          <button type="button" class="btn btn-light"><%= link_to '店舗のログアウト',destroy_shop_session_path, method: :delete, class: "text-dark" %></button>
           <button type="button" class="btn btn-light"><%= link_to '店舗一覧',admin_shops_path, class: "text-dark" %></button>
           <button type="button" class="btn btn-light"><%= link_to 'ジャンル一覧',admin_genres_path, class: "text-dark" %></button>
           <button type="button" class="btn btn-light"><%= link_to 'ログアウト',destroy_admin_session_path, method: :delete, class: "text-dark" %></button>
@@ -35,9 +35,13 @@
         </div>
       </div>
       <% else %>
-      <div class='col-md-5 offset-md-5 pull-right d-flex align-items-center'>
+      <div class='col-md-6 offset-md-4 pull-right d-flex align-items-center'>
         <div class="text-right">
-          <button type="button" class="btn btn-light"><%= link_to 'ログイン',new_admin_session_path, class: "text-dark" %></button>
+          <button type="button" class="btn btn-light"><%= link_to 'アバウト',about_path, class: "text-dark" %></button>
+          <button type="button" class="btn btn-light"><%= link_to '店舗一覧',shops_path, class: "text-dark" %></button>
+          <button type="button" class="btn btn-light"><%= link_to '商品一覧',products_path, class: "text-dark" %></button>
+          <button type="button" class="btn btn-light"><%= link_to '新規登録',new_customer_registration_path, class: "text-dark" %></button>
+          <button type="button" class="btn btn-light"><%= link_to 'ログイン',new_customer_session_path, class: "text-dark" %></button>
         </div>
       <% end %>
       </div>
