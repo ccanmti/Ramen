@@ -1,0 +1,27 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-12">
+      <h2>会員一覧</h2>
+      <table class ="table">
+        <tr>
+          <th>会員id</th>
+          <th>ユーザー名(漢字)</th>
+          <th>ユーザー名(カナ)</th>
+          <th>メールアドレス</th>
+          <th>会員ステータス</th>
+          <th></th>
+        </tr>
+        <% @customers.each do |customer| %>
+        <tr>
+          <th><%= customer.id %></th>
+          <th><%= customer.last_name %><%= customer.first_name %></th>
+          <th><%= customer.last_name_kana %><%= customer.first_name_kana %></th>
+          <th><%= customer.email %></th>
+          <th><%= customer.is_deleted %></th>
+          <th><%= link_to "編集する", edit_admin_customer_path(customer.id), class: "btn btn-success" %></th>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

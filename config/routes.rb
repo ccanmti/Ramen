@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :genres, only: [:index,:edit,:new,:update,:destroy,:create]
     resources :shops,  only: [:index,:edit,:show,:update,:destroy]
+    resources :customers,  only: [:index,:edit,:update]
   end
 
   #shop側routing
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
     get   'shops/unsubscribe'      => 'shops#unsubscribe'
     patch 'shops/withdraw'         => 'shops#withdraw'
     resources :products,  only: [:new,:index,:edit,:show,:update,:destroy,:create]
+    resources :items,  only: [:new,:index,:edit,:update,:destroy,:create]
   end
 
   #public側routing
@@ -39,5 +41,6 @@ Rails.application.routes.draw do
     get "about"=>"homes#about"
     resources :shops,  only: [:index,:show]
     resources :products,  only: [:index,:show]
+    resources :cart_items,  only: [:index,:create,:update,:destroy]
   end
 end

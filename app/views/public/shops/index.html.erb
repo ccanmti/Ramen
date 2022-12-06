@@ -1,2 +1,7 @@
-<h1>Public::Shops#index</h1>
-<p>Find me in app/views/public/shops/index.html.erb</p>
+<h2>店舗一覧</h2>
+<% @shops.each do |shop| %>
+<%= image_tag shop.image, size: "150x150" %>
+<%= shop.name %>
+<%= shop.address %>
+<%= shop.genre_id %>
+<% end %>

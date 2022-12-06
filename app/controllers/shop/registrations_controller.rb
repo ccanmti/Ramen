@@ -12,7 +12,7 @@ class Shop::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     # super
-    Shop.create!(params.require(:shop).permit(:name, :email, :password))
+    Shop.create!(params.require(:shop).permit(:name, :email,:postal_code,:address,:telephone_number,:genre_id, :password,:image))
     redirect_to admin_homes_top_path
   end
 

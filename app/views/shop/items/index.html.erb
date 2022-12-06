@@ -1,0 +1,64 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "offset-2 col-10">
+      <h2>ストアの商品一覧</h2>
+      <table class = "table">
+        <tr>
+          <th>商品画像</th>
+          <th>商品名</th>
+          <th>税込価格</th>
+          <th></th>
+        </tr>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= image_tag item.image,size: "100x100" %></td>
+          <td><%= item.name %></td>
+          <td><%= item.price %></td>
+          <td><%= link_to "編集する", edit_shop_item_path(item.id), class: "btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class = "offset-3 col-6">
+      <h2>ストアの商品新規登録</h2>
+      <table class = "table">
+        <%= form_with model: @item, url: shop_items_path do |f| %>
+          <tr>
+            <th><%= f.label :image, '商品画像' %></th>
+            <th><%= f.file_field :image, accept: "image/*" %></th>
+          </tr>
+          <tr>
+            <th><%= f.label :name, '商品名' %></th>
+            <th><%= f.text_field :name, class: 'form-control' %></th>
+          </tr>
+          <tr>
+            <th><%= f.label :introduction, '商品説明' %></th>
+            <th><%= f.text_field :name, class: 'form-control' %></th>
+          </tr>
+          <tr>
+          <th><%= f.label :price, '税込価格' %></th>
+          <th><%= f.number_field :price, min: 0, placeholder: "1000", required: true, class: "w-50" %>円</th>
+          </tr>
+          <tr>
+            <th><%= f.label :genre_id, 'ジャンル名' %></th>
+            <th><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --", required: true, class: "w-50" %></th>
+          </tr>
+          <tr>
+            <th>販売ステータス</th>
+            <th>
+            <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, '販売中' %>
+        <%= f.radio_button :is_active, false %>
+        <%= f.label :is_active, '販売停止中' %>
+            <%= f.hidden_field :shop_id, :value => current_shop.id %>
+            </th>
+          </tr>
+          <tr>
+          <td></td>
+          <td><%= f.submit '新規登録', class: "btn btn-success" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

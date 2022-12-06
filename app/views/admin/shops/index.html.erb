@@ -3,15 +3,19 @@
     <div class = "col-12">
       <table class = "table">
         <tr>
+          <th>店舗id</th>
           <th>店舗名</th>
           <th>メールアドレス</th>
+          <th>電話番号</th>
           <th></th>
         </tr>
         <% @shops.each do |shop| %>
         <tr>
-          <td><%= shop.name %></td>
-          <td><%= shop.email %></td>
-          <td><%= link_to "詳細", admin_shop_path(shop.id), class: "btn btn-success" %></td>
+          <th><%= shop.id %></th>
+          <th><%= shop.name %></th>
+          <th><%= shop.email %></th>
+          <th><%= shop.telephone_number %></th>
+          <th><%= link_to "詳細", admin_shop_path(shop.id), class: "btn btn-success" %></th>
         </tr>
         <% end %>
       </table>

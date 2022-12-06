@@ -1,15 +1,37 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-12">
+
+    <div class = "col-5">
+      <%= image_tag @shop.image,size: "400x400" %>
+    </div>
+    <div class = "col-7">
       <table class = "table">
         <tr>
           <th>店舗名</th>
-          <th>メールアドレス</th>
-          <th></th>
+          <th><%= @shop.name %></th>
         </tr>
         <tr>
-          <td><%= @shop.name %></td>
-          <td><%= @shop.email %></td>
+          <th>メールアドレス</th>
+          <th><%= @shop.email %></th>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <th><%= @shop.postal_code %></th>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <th><%= @shop.address %></th>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <th><%= @shop.telephone_number %></th>
+        </tr>
+        <tr>
+          <th>ジャンル名</th>
+          <th><%= @shop.genre_id %></th>
+        </tr>
+        <tr>
+          <th><%= link_to "編集する",edit_admin_genre_path %></th>
         </tr>
       </table>
     </div>
