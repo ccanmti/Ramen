@@ -1,2 +1,87 @@
-<h1>Public::Shops#show</h1>
-<p>Find me in app/views/public/shops/show.html.erb</p>
+<div class = "container">
+  <div class = "row">
+    <div class = "offset-1 col-4">
+      <%=image_tag @shop.image, size: "300x300" %>
+    </div>
+    <div class = "col-7">
+      <table class = "table">
+        <tr>
+          <th>店舗名</th>
+          <th><%= @shop.name %></th>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <th><%= @shop.address %></th>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <th><%= @shop.genre.name %></th>
+        </tr>
+      </table>
+    </div>
+    <div class = "col-12">
+      <h2>Menu</h2>
+    </div>
+    <% @products.each do |product| %>
+    <div class = "col-4">
+    <%=image_tag product.image, size: "300x300" %>
+      <table class = "table">
+        <tr>
+          <th>商品名</th>
+          <th><%= product.name %></th>
+        </tr>
+        <tr>
+          <th>ジャンル名</th>
+          <th><%= product.genre.name %></th>
+        </tr>
+        <tr>
+          <th>税込価格</th>
+          <th><%= product.price %></th>
+        </tr>
+      </table>
+    </div>
+    <% end %>
+    <div class = "col-12">
+      <h2>Store</h2>
+      <strong>ご自宅でもお店の味を楽しめます</strong>
+    </div>
+    <% @items.each do |item| %>
+    <div class = "col-4">
+    <%= link_to item_path(item.id) do %>
+    <%=image_tag item.image, size: "300x300" %>
+    <% end %>
+      <table class = "table">
+        <tr>
+          <th>商品名</th>
+          <th><%= item.name %></th>
+        </tr>
+        <tr>
+          <th>ジャンル名</th>
+          <th><%= item.genre.name %></th>
+        </tr>
+        <tr>
+          <th>税込価格</th>
+          <th><%= item.price %></th>
+        </tr>
+      </table>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<div>
+  <p>コメント件数：<%= @shop.shop_comments.count %></p>
+  <% @shop.shop_comments.each do |shop_comment| %>
+    <%= shop_comment.customer.last_name %><%= shop_comment.customer.first_name %>
+    <%= shop_comment.product.name %>
+    <%= shop_comment.created_at.strftime('%Y/%m/%d') %><%= shop_comment.comment %>
+  <% end %>
+</div>
+<div>
+  <%= form_with url: shop_comments_path(@shop), method: :post do |f| %>
+  <%= f.label :product_id, '商品名' %>
+  <%= f.select :product_id, options_from_collection_for_select(@products, :id, :name),prompt: "-- 選択してください --", required: true, class: "w-50" %>
+  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+  <%= f.submit "送信する" %>
+  <% end %>
+</div>

@@ -1,0 +1,41 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "offset-2 col-9">
+    <h2><%= @genre.name %>の店舗一覧</h2>
+      <table class = "table">
+        <tr>
+          <th></th>
+          <th>店舗名</th>
+          <th>住所</th>
+          <th>ジャンル名</th>
+          <th>お気に入り数</th>
+        </tr>
+        <% @shops.each do |shop| %>
+        <tr>
+          <td>
+            <%= link_to shop_path(shop.id) do %>
+            <%= image_tag shop.image, size: "150x150" %>
+            <% end %>
+          </td>
+          <td><%= shop.name %></td>
+          <td><%= shop.address %></td>
+          <td><%= shop.genre.name %></td>
+          <% if shop.favorited_by?(current_customer) %>
+            <td>
+              <%= link_to shop_favorites_path(shop), method: :delete do %>
+                ♥<%= shop.favorites.count %> いいね
+              <% end %>
+            </td>
+          <% else %>
+            <td>
+            <%= link_to shop_favorites_path(shop), method: :post do %>
+              ♡<%= shop.favorites.count %> いいね
+            <% end %>
+            </td>
+          <% end %>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

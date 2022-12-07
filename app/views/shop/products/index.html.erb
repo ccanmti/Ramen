@@ -1,14 +1,11 @@
 <div class = "container">
   <div class = "row">
     <% @products.each do |product| %>
-    <div class = "col-6">
+    <div class = "col-3">
+    <%= link_to edit_shop_product_path(product.id) do %>
+    <%= image_tag product.image, size: "200x200" %>
+    <% end %>
       <table class = "table">
-        <tr>
-          <th><%= link_to edit_shop_product_path(product.id) do %>
-          <%= image_tag product.image, size: "400x400" %>
-          <% end %>
-          </th>
-        </tr>
         <tr>
           <th>商品名</th>
           <th><%=  product.name %></th>
@@ -19,7 +16,7 @@
         </tr>
         <tr>
           <th>ジャンル名</th>
-          <th><%= product.genre_id %></th>
+          <th><%= product.genre.name %></th>
         </tr>
       </table>
     </div>

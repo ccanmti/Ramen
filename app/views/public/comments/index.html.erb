@@ -1,0 +1,28 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-12">
+      <h2>コメント一覧</h2>
+      <table class = "table">
+        <tr>
+          <th></th>
+          <th>店舗名</th>
+          <th>コメント</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @shop_comments.each do |shop_comment| %>
+        <tr>
+          <th><%= link_to shop_path(shop_comment.shop_id) do %>
+            <%= image_tag shop_comment.shop.image, size: "100x100" %>
+            <% end %>
+          </th>
+          <th><%= shop_comment.shop.name %></th>
+          <th><%= shop_comment.comment %></th>
+          <th><%= link_to "編集する", edit_comment_path(shop_comment.id), class: "btn btn-success" %></th>
+          <th><%= link_to "削除する", comment_path(shop_comment.id), method: :delete, class: "btn btn-danger" %></th>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

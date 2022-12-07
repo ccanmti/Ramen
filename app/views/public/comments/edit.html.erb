@@ -1,0 +1,35 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "offset-3 col-8">
+      <h2>コメント編集画面</h2>
+      <table class = "table">
+        <tr>
+          <th>店舗名</th>
+          <th><%= @shop_comment.shop.name %></th>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <th><%= @shop_comment.product.name %></th>
+        </tr>
+        <tr>
+          <th>コメント日</th>
+          <th><%= @shop_comment.created_at.strftime('%Y/%m/%d') %></th>
+        </tr>
+        <%= form_with model: @shop_comment, url: comment_path(@shop_comment.id) do |f| %>
+        <tr>
+          <th>コメント</th>
+          <th><%= f.text_area :comment, placeholder: "コメント", required: true %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= f.submit '変更を保存', class: "btn btn-success" %></th>
+          <th><%= link_to 'コメントを削除する',comment_path, method: :delete, class: "btn btn-danger" %></th>
+        </tr>
+        <tr>
+          <th><%= link_to 'コメント一覧へ戻る',comments_path, class: "btn btn-primary" %><th>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

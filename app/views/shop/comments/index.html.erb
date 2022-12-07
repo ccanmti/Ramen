@@ -1,0 +1,26 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "offset-2 col-6">
+      <h2>コメント一覧</h2>
+    </div>
+    <div class = "col-3">
+      <strong><%= @comments.count %>件のコメント</strong>
+    </div>
+    <div class = "offset-2 col-9">
+      <table class = "table">
+        <tr>
+          <th>投稿者</th>
+          <th>コメント</th>
+          <th></th>
+        </tr>
+        <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.customer.last_name %><%= comment.customer.first_name %></td>
+          <td><%= comment.comment %></td>
+          <th><%= link_to '削除',shop_comment_path(comment.id), method: :delete, class: "btn btn-danger" %></th>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
