@@ -1,2 +1,30 @@
-<h1>Public::Products#show</h1>
-<p>Find me in app/views/public/products/show.html.erb</p>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-5">
+    <%= image_tag @product.image, size: "400x400" %>
+    </div>
+    <div class = "col-7">
+      <table class = "table">
+        <tr>
+          <th>商品名</th>
+          <th><%= @product.name %></th>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <th><%= @product.introduction %></th>
+        </tr>
+        <tr>
+          <th>ジャンル名</th>
+          <th><%= @product.genre.name %></th>
+        </tr>
+        <tr>
+          <th>商品価格</th>
+          <th><%= @product.price %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= link_to "店舗ページへ",shop_path(@product.shop_id),class:"btn btn-success" %></th>
+      </table>
+    </div>
+  </div>
+</div>

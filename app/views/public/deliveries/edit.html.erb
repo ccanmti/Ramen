@@ -1,0 +1,6 @@
+    <%= form_with model: @delivery, url: delivery_path do |f| %>
+      <%= f.text_field :name, class: 'form-control', required: true %>
+      <%= f.text_field :postal_code, class: 'form-control', required: true %>
+      <%= f.text_field :address, class: 'form-control', required: true %>
+      <%= f.submit '情報を更新', class: "btn btn-success" %>
+    <% end %>

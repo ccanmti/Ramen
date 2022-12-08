@@ -25,15 +25,15 @@
         <%= form_with model: @item, url: shop_items_path do |f| %>
           <tr>
             <th><%= f.label :image, '商品画像' %></th>
-            <th><%= f.file_field :image, accept: "image/*" %></th>
+            <th><%= f.file_field :image, accept: "image/*", required: true %></th>
           </tr>
           <tr>
             <th><%= f.label :name, '商品名' %></th>
-            <th><%= f.text_field :name, class: 'form-control' %></th>
+            <th><%= f.text_field :name, class: 'form-control', required: true %></th>
           </tr>
           <tr>
             <th><%= f.label :introduction, '商品説明' %></th>
-            <th><%= f.text_field :name, class: 'form-control' %></th>
+            <th><%= f.text_field :name, class: 'form-control', required: true %></th>
           </tr>
           <tr>
           <th><%= f.label :price, '税込価格' %></th>
@@ -47,9 +47,9 @@
             <th>販売ステータス</th>
             <th>
             <%= f.radio_button :is_active, true %>
-          <%= f.label :is_active, '販売中' %>
-        <%= f.radio_button :is_active, false %>
-        <%= f.label :is_active, '販売停止中' %>
+            <%= f.label :is_active, '販売中' %>
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, '販売停止中' %>
             <%= f.hidden_field :shop_id, :value => current_shop.id %>
             </th>
           </tr>

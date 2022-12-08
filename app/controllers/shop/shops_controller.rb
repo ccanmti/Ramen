@@ -1,6 +1,7 @@
 class Shop::ShopsController < ApplicationController
   def show
     @shop = current_shop
+    @businesshours = @shop.businesshours
   end
 
   def edit
@@ -17,6 +18,11 @@ class Shop::ShopsController < ApplicationController
   end
 
   def withdraw
+  end
+
+  def businesshour
+    @shop = current_shop
+    @businesshour = Businesshour.new
   end
 
   private

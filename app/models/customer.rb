@@ -8,4 +8,5 @@ class Customer < ApplicationRecord
   has_many :deliveries, dependent: :destroy
   has_many :shop_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :orders, dependent: :destroy
 end

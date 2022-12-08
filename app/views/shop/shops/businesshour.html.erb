@@ -1,0 +1,89 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "co-5">
+      <h2>診療時間作成</h2>
+      <%= form_with model: @businesshour, url: shop_businesshours_path do |f|%>
+      <table class = "table">
+        <tr>
+          <th><%= f.label :start_time, "開始時間" %></th>
+          <th><%= f.label :end_time, "終了時間"%></th>
+          <th><%= f.label :monday, "月曜日" %></th>
+          <th><%= f.label :tuesday, "火曜日" %></th>
+          <th><%= f.label :wednesday, "水曜日" %></th>
+          <th><%= f.label :thursday, "木曜日" %></th>
+          <th><%= f.label :friday, "金曜日" %></th>
+          <th><%= f.label :saturday, "土曜日" %></th>
+          <th><%= f.label :sunday, "日曜日" %></th>
+        </tr>
+        <tr>
+          <th><%= f.time_select(:start_time, { id:"start-time",  time_separator: ':',default: Date.today + 1.hour}, ignore_data: true ) %></th>
+          <th><%= f.time_select(:end_time, { id:"start-time",  time_separator: ':',default: Date.today + 2.hour}, ignore_data: true) %></th>
+          <th><%= f.select :monday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
+          <th><%= f.select :tuesday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
+          <th><%= f.select :wednesday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
+          <th><%= f.select :thursday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
+          <th><%= f.select :friday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
+          <th><%= f.select :saturday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
+          <th><%= f.select :sunday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
+        </tr>
+        <tr>
+          <th><%= link_to "マイショップへ戻る", shop_shops_my_shop_path %></th>
+        </tr>
+        <%= f.hidden_field :shop_id, value: current_shop.id %>
+      </table>
+      <%= f.submit "登録する" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+    <div>
+
+
+    </div>
+    <div>
+
+
+    </div>
+    <div>
+      <div>
+
+
+      </div>
+      <div>
+
+
+      </div>
+      <div>
+
+
+      </div>
+      <div>
+
+
+      </div>
+      <div>
+
+
+      </div>
+      <div>
+
+
+      </div>
+      <div>
+
+
+      </div>
+      <div>
+      </div>
+    </div>
+    <div>
+    </div>
+
+    <div>
+
+    </div>
+
+  <div>
+
+  </div>
+</div>

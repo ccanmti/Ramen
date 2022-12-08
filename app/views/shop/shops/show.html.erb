@@ -37,3 +37,52 @@
     </div>
   </div>
 </div>
+<div>
+  <div>
+    <h2>営業時間情報</h2>
+    <div>
+      <table>
+        <tr>
+          <th>時間</th>
+          <th>月</th>
+          <th>火</th>
+          <th>水</th>
+          <th>木</th>
+          <th>金</th>
+          <th>土</th>
+          <th>日</th>
+          <th>祝</th>
+          <th>編集</th>
+          <th>削除</th>
+        </tr>
+        <% if @businesshours.exists? %>
+          <% @businesshours.each do |businesshour| %>
+            <tr>
+              <td><%= businesshour.start_time.strftime( "%H:%M" ) %> - <%= businesshour.end_time.strftime( "%H:%M" ) %></td>
+              <td><%= businesshour.monday %></td>
+              <td><%= businesshour.tuesday %></td>
+              <td><%= businesshour.wednesday %></td>
+              <td><%= businesshour.thursday %></td>
+              <td><%= businesshour.friday %></td>
+              <td><%= businesshour.saturday %></td>
+              <td><%= businesshour.sunday %></td>
+              <td><%= businesshour.holiday %></td>
+              <td><%= link_to "修正", edit_shop_businesshour_path(businesshour.id) %></td>
+              <td><%= link_to "削除", shop_businesshour_path(businesshour.id), method: :delete, data: {confirm: "本当に削除しますか"} %></td>
+            </tr>
+          <% end %>
+        <% else %>
+          <div>営業時間が登録されていません</div>
+        <% end %>
+      </table>
+      <div>
+        <% if @businesshours.exists? %>
+          <% @businesshours.each do |businesshour| %>
+            <%= businesshour.detail %><br>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div><%= link_to "診療時間を登録する", businesshour_shop_shop_path(@shop.id) %></div>
+  </div>
+</div>

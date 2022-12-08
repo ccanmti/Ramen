@@ -1,0 +1,48 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "offset-2 col-6">
+    <h2>配送先新規登録</h2>
+    <%= form_with model: @delivery, url: deliveries_path do |f| %>
+      <table class ="table">
+        <tr>
+          <th>宛名</th>
+          <th><%= f.text_field :name, required: true, placeholder:"佐藤　太郎", class: 'form-control' %></th>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <th><%= f.text_field :postal_code, required: true, placeholder:"123-4567", class: 'form-control' %></th>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <th><%= f.text_field :address, required: true, placeholder:"東京都港区12-4", class: 'form-control' %></th>
+        </tr>
+        <%= f.hidden_field :customer_id, :value => current_customer.id %>
+        <tr>
+          <th></th>
+          <th><%= f.submit '新規登録', class: "btn btn-success" %></th>
+        </tr>
+      </table>
+    <% end %>
+    </div>
+    <div class = "offset-2 col-7">
+    <h2>配送先一覧</h2>
+      <table class = "table">
+        <tr>
+          <th>宛名</th>
+          <th>郵便番号</th>
+          <th>配送先住所</th>
+          <th></th>
+        </tr>
+      <% @deliveries.each do |delivery| %>
+        <tr>
+        <td><%= delivery.name %></td>
+        <td><%= delivery.postal_code %></td>
+        <td><%= delivery.address %></td>
+        <td><%= link_to "編集",edit_delivery_path(delivery.id), class: "btn btn-success" %></td>
+        <td><%= link_to "削除",delivery_path(delivery.id), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ class Shop < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :shop_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :businesshours, dependent: :destroy
   belongs_to :genre
   has_one_attached :image
 
