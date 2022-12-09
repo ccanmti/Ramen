@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <div class = "co-5">
-      <h2>診療時間作成</h2>
+      <h2>営業時間作成</h2>
       <%= form_with model: @businesshour, url: shop_businesshours_path do |f|%>
       <table class = "table">
         <tr>
@@ -16,15 +16,15 @@
           <th><%= f.label :sunday, "日曜日" %></th>
         </tr>
         <tr>
-          <th><%= f.time_select(:start_time, { id:"start-time",  time_separator: ':',default: Date.today + 1.hour}, ignore_data: true ) %></th>
-          <th><%= f.time_select(:end_time, { id:"start-time",  time_separator: ':',default: Date.today + 2.hour}, ignore_data: true) %></th>
-          <th><%= f.select :monday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
-          <th><%= f.select :tuesday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
-          <th><%= f.select :wednesday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
-          <th><%= f.select :thursday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
-          <th><%= f.select :friday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
-          <th><%= f.select :saturday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
-          <th><%= f.select :sunday, [["-", "-"], ["●", "●"], ["※", "※"]] %></th>
+          <th><%= f.time_select(:start_time, { id:"start-time",  time_separator: ':',default: Date.today + 0.hour}, ignore_data: true ) %></th>
+          <th><%= f.time_select(:end_time, { id:"start-time",  time_separator: ':',default: Date.today + 1.hour}, ignore_data: true) %></th>
+          <th><%= f.select :monday, [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :tuesday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :wednesday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :thursday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :friday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :saturday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :sunday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
         </tr>
         <tr>
           <th><%= link_to "マイショップへ戻る", shop_shops_my_shop_path %></th>

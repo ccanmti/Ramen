@@ -1,9 +1,10 @@
 <div class = "container">
   <div class = "row">
-    <div class = "offset-1 col-4">
-      <%=image_tag @shop.image, size: "300x300" %>
+    <div class = "col-4">
+      <%=image_tag @shop.image, size: "280x280" %>
     </div>
-    <div class = "col-7">
+    <div class = "col-3">
+      <h4>店舗情報</h4>
       <table class = "table">
         <tr>
           <th>店舗名</th>
@@ -17,7 +18,132 @@
           <th>ジャンル</th>
           <th><%= @shop.genre.name %></th>
         </tr>
+        <tr>
+          <th>お気に入り数</th>
+          <th><%= @shop.favorites.count %></th>
+        </tr>
+        <tr>
+          <th>コメント数</th>
+          <th><%= @shop.shop_comments.count %></th>
+        </tr>
       </table>
+    </div>
+    <div class = "col-5">
+      <h4>営業時間情報</h4>
+      <div>
+        <table class = "table">
+          <tr>
+            <th>時間</th>
+            <th>月</th>
+            <th>火</th>
+            <th>水</th>
+            <th>木</th>
+            <th>金</th>
+            <th>土</th>
+            <th>日</th>
+          </tr>
+          <% if @businesshours.exists? %>
+            <% @businesshours.each do |businesshour| %>
+              <tr>
+                <th><%= businesshour.start_time.strftime( "%H:%M" ) %> - <%= businesshour.end_time.strftime( "%H:%M" ) %></th>
+                <% if Date.today.wday == 1 %>
+                  <% if businesshour.monday == true %>
+                    <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% else %>
+                  <% if businesshour.monday == true %>
+                    <td class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% end %>
+                <% if Date.today.wday == 2 %>
+                  <% if businesshour.tuesday == true %>
+                    <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% else %>
+                  <% if businesshour.tuesday == true %>
+                    <td class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% end %>
+                <% if Date.today.wday == 3 %>
+                  <% if businesshour.wednesday == true %>
+                    <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% else %>
+                  <% if businesshour.wednesday == true %>
+                    <td class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% end %>
+                <% if Date.today.wday == 4 %>
+                  <% if businesshour.thursday == true %>
+                    <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% else %>
+                  <% if businesshour.thursday == true %>
+                    <td class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% end %>
+                <% if Date.today.wday == 5 %>
+                  <% if businesshour.friday == true %>
+                    <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% else %>
+                  <% if businesshour.friday == true %>
+                    <td class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% end %>
+                <% if Date.today.wday == 6 %>
+                  <% if businesshour.saturday == true %>
+                    <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% else %>
+                  <% if businesshour.saturday == true %>
+                    <td class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% end %>
+                <% if Date.today.wday == 7 %>
+                  <% if businesshour.sunday == true %>
+                    <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% else %>
+                  <% if businesshour.sunday == true %>
+                    <td class="text-success font-weight-bold">●</td>
+                  <% else %>
+                    <td class="text-secondary font-weight-bold">ー</td>
+                  <% end %>
+                <% end %>
+              </tr>
+            <% end %>
+          <% else %>
+            <div>営業時間が登録されていません</div>
+          <% end %>
+        </table>
+      </div>
     </div>
     <div class = "col-12">
       <h2>Menu</h2>

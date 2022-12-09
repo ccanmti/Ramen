@@ -3,15 +3,13 @@ class CreateBusinesshours < ActiveRecord::Migration[6.1]
     create_table :businesshours do |t|
       t.time :start_time
       t.time :end_time
-      t.string :monday
-      t.string :tuesday
-      t.string :wednesday
-      t.string :thursday
-      t.string :friday
-      t.string :saturday
-      t.string :sunday
-      t.string :holiday
-      t.string :detail
+      t.boolean :monday, default: "FALSE"
+      t.boolean :tuesday, default: "FALSE"
+      t.boolean :wednesday, default: "FALSE"
+      t.boolean :thursday, default: "FALSE"
+      t.boolean :friday, default: "FALSE"
+      t.boolean :saturday, default: "FALSE"
+      t.boolean :sunday, default: "FALSE"
       t.integer :shop_id
 
       t.timestamps

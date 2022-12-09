@@ -7,7 +7,7 @@ class Shop::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save!
-    redirect_to shop_items_path
+    redirect_to 
   end
 
   def edit

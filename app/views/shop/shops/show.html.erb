@@ -28,20 +28,27 @@
           </tr>
           <tr>
             <th>ジャンル名</th>
-            <th><%= @shop.genre_id %></th>
+            <th><%= @shop.genre.name %></th>
           </tr>
           <tr>
+            <th>営業状況</th>
+              <% if @shop_status == "Open" %>
+                <td class="text-success font-weight-bold">Open</td>
+              <% else %>
+                <td class="text-danger font-weight-bold">Close</td>
+              <% end %></th>
+          </tr>
+          <tr>
+            <th></th>
             <th><%= link_to "編集する", shop_shops_information_edit_path ,class:"btn btn-primary"%></th>
           </tr>
       </table>
     </div>
-  </div>
-</div>
-<div>
-  <div>
-    <h2>営業時間情報</h2>
-    <div>
-      <table>
+    <div class = "col-12">
+      <h2>営業時間情報</h2>
+    </div>
+    <div class = "col-10">
+      <table class = "table">
         <tr>
           <th>時間</th>
           <th>月</th>
@@ -51,38 +58,116 @@
           <th>金</th>
           <th>土</th>
           <th>日</th>
-          <th>祝</th>
-          <th>編集</th>
-          <th>削除</th>
+          <th></th>
+          <th></th>
         </tr>
         <% if @businesshours.exists? %>
           <% @businesshours.each do |businesshour| %>
             <tr>
-              <td><%= businesshour.start_time.strftime( "%H:%M" ) %> - <%= businesshour.end_time.strftime( "%H:%M" ) %></td>
-              <td><%= businesshour.monday %></td>
-              <td><%= businesshour.tuesday %></td>
-              <td><%= businesshour.wednesday %></td>
-              <td><%= businesshour.thursday %></td>
-              <td><%= businesshour.friday %></td>
-              <td><%= businesshour.saturday %></td>
-              <td><%= businesshour.sunday %></td>
-              <td><%= businesshour.holiday %></td>
-              <td><%= link_to "修正", edit_shop_businesshour_path(businesshour.id) %></td>
-              <td><%= link_to "削除", shop_businesshour_path(businesshour.id), method: :delete, data: {confirm: "本当に削除しますか"} %></td>
+              <th><%= businesshour.start_time.strftime( "%H:%M" ) %> - <%= businesshour.end_time.strftime( "%H:%M" ) %></th>
+              <% if Date.today.wday == 1 %>
+                <% if businesshour.monday == true %>
+                  <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% else %>
+                <% if businesshour.monday == true %>
+                  <td class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% end %>
+              <% if Date.today.wday == 2 %>
+                <% if businesshour.tuesday == true %>
+                  <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% else %>
+                <% if businesshour.tuesday == true %>
+                  <td class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% end %>
+              <% if Date.today.wday == 3 %>
+                <% if businesshour.wednesday == true %>
+                  <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% else %>
+                <% if businesshour.wednesday == true %>
+                  <td class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% end %>
+              <% if Date.today.wday == 4 %>
+                <% if businesshour.thursday == true %>
+                  <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% else %>
+                <% if businesshour.thursday == true %>
+                  <td class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% end %>
+              <% if Date.today.wday == 5 %>
+                <% if businesshour.friday == true %>
+                  <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% else %>
+                <% if businesshour.friday == true %>
+                  <td class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% end %>
+              <% if Date.today.wday == 6 %>
+                <% if businesshour.saturday == true %>
+                  <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% else %>
+                <% if businesshour.saturday == true %>
+                  <td class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% end %>
+              <% if Date.today.wday == 7 %>
+                <% if businesshour.sunday == true %>
+                  <td bgcolor="#F2F2F2",class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td bgcolor="#F2F2F2",class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% else %>
+                <% if businesshour.sunday == true %>
+                  <td class="text-success font-weight-bold">●</td>
+                <% else %>
+                  <td class="text-secondary font-weight-bold">ー</td>
+                <% end %>
+              <% end %>
+              <td><%= link_to "修正", edit_shop_businesshour_path(businesshour.id), class: "btn btn-success" %></td>
+              <td><%= link_to "削除", shop_businesshour_path(businesshour.id), method: :delete, data: {confirm: "本当に削除しますか"},class: "btn btn-danger" %></td>
             </tr>
-          <% end %>
+            <% end %>
+            <tr>
+              <td><%= link_to "営業時間を追加する", businesshour_shop_shop_path(@shop.id) %></td>
+            </tr>
+
         <% else %>
           <div>営業時間が登録されていません</div>
         <% end %>
       </table>
-      <div>
-        <% if @businesshours.exists? %>
-          <% @businesshours.each do |businesshour| %>
-            <%= businesshour.detail %><br>
-          <% end %>
-        <% end %>
-      </div>
     </div>
-    <div><%= link_to "診療時間を登録する", businesshour_shop_shop_path(@shop.id) %></div>
   </div>
 </div>

@@ -55,15 +55,13 @@ ActiveRecord::Schema.define(version: 2022_12_08_092030) do
   create_table "businesshours", force: :cascade do |t|
     t.time "start_time"
     t.time "end_time"
-    t.string "monday"
-    t.string "tuesday"
-    t.string "wednesday"
-    t.string "thursday"
-    t.string "friday"
-    t.string "saturday"
-    t.string "sunday"
-    t.string "holiday"
-    t.string "detail"
+    t.boolean "monday", default: false
+    t.boolean "tuesday", default: false
+    t.boolean "wednesday", default: false
+    t.boolean "thursday", default: false
+    t.boolean "friday", default: false
+    t.boolean "saturday", default: false
+    t.boolean "sunday", default: false
     t.integer "shop_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

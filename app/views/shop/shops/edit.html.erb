@@ -38,6 +38,7 @@
         <th><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --", required: true %></th>
       </tr>
       <tr>
+        <th></th>
         <th><%= f.submit '変更を保存', class: "btn btn-success" %></th>
       </tr>
       <% end %>

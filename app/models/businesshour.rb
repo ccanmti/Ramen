@@ -12,4 +12,5 @@ class Businesshour < ApplicationRecord
       end
     end
   end
+
 end

@@ -1,7 +1,6 @@
 class Shop::BusinesshoursController < ApplicationController
   def create
     @businesshour = Businesshour.new(businesshour_params)
-    shop_id = @businesshour.shop_id
     if @businesshour.save!
       redirect_to shop_shops_my_shop_path, notice: "営業時間を追加しました"
     else
@@ -11,12 +10,13 @@ class Shop::BusinesshoursController < ApplicationController
   end
 
   def edit
+    @businesshours = current_shop.businesshours
     @businesshour = Businesshour.find(params[:id])
   end
 
   def update
     @businesshour = Businesshour.find(params[:id])
-    if @businesshour.update(businesshour_params)
+    if @businesshour.update!(businesshour_params)
       redirect_to shop_shops_my_shop_path, notice: "営業時間を更新しました"
     else
       @businesshour.start_time = "00:00" if @businesshour.start_time.nil?
@@ -25,10 +25,16 @@ class Shop::BusinesshoursController < ApplicationController
     end
   end
 
+  def update_all
+    @businesshours = current_shop.businesshours
+    @businesshours.update_all(businesshour_params)
+    redirect_to request.referer
+  end
+
   def destroy
     @businesshour = Businesshour.find(params[:id])
     @businesshour.destroy
-    redirect_to shop_shops_my_shop_path, notice: "営業時間を削除しました"
+    redirect_to request.referer, notice: "営業時間を削除しました"
   end
 
   private

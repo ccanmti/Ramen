@@ -1,57 +1,31 @@
-<div>
-  <h2>診療時間編集</h2>
-  <%= form_with model: @businesshour, url: shop_businesshour_path do |f|%>
-    <div>
-      <%= f.label :start_time, "開始時間" %>
-      <%= f.text_field :start_time, value: @businesshour.start_time.to_s(:stamp) %>
+<div class = "container" >
+  <div class = "row">
+    <div clas = "col-12">
+      <table class = "table">
+        <tr>
+          <th>時間</th>
+          <th>月曜日</th>
+          <th>火曜日</th>
+          <th>水曜日</th>
+          <th>木曜日</th>
+          <th>金曜日</th>
+          <th>土曜日</th>
+          <th>日曜日</th>
+        </tr>
+        <%= form_with model: @businesshour, url: shop_businesshour_path do |f| %>
+        <tr>
+          <th><%= f.time_select :start_time %><%= f.time_select :end_time %></th>
+          <th><%= f.select :monday, [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :tuesday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :wednesday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :thursday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :friday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :saturday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.select :sunday,  [['-',0],['●',1]], { include_blank: true, selected: 0 } %></th>
+          <th><%= f.submit '変更', class: "btn btn-success" %></th>
+        </tr>
+        <% end %>
+      </table>
     </div>
-    <div>
-      <%= f.label :end_time, "終了時間"%>
-      <%= f.text_field :end_time, value: @businesshour.end_time.to_s(:stamp) %>
-    </div>
-    <div>
-      <div>
-        <%= f.label :monday, "月曜日" %>
-        <%= f.select :monday, [["-", "-"], ["●", "●"], ["※", "※"]] %>
-      </div>
-      <div>
-        <%= f.label :tuesday, "火曜日" %>
-        <%= f.select :tuesday, [["-", "-"], ["●", "●"], ["※", "※"]] %>
-      </div>
-      <div>
-        <%= f.label :wednesday, "水曜日" %>
-        <%= f.select :wednesday, [["-", "-"], ["●", "●"], ["※", "※"]] %>
-      </div>
-      <div>
-        <%= f.label :thursday, "木曜日" %>
-        <%= f.select :thursday, [["-", "-"], ["●", "●"], ["※", "※"]] %>
-      </div>
-      <div>
-        <%= f.label :friday, "金曜日" %>
-        <%= f.select :friday, [["-", "-"], ["●", "●"], ["※", "※"]] %>
-      </div>
-      <div>
-        <%= f.label :saturday, "土曜日" %>
-        <%= f.select :saturday, [["-", "-"], ["●", "●"], ["※", "※"]] %>
-      </div>
-      <div>
-        <%= f.label :sunday, "日曜日" %>
-        <%= f.select :sunday, [["-", "-"], ["●", "●"], ["※", "※"]] %>
-      </div>
-      <div>
-        <%= f.label :holiday, "祝日" %>
-        <%= f.select :holiday, [["-", "-"], ["●", "●"], ["※", "※"]] %>
-      </div>
-    </div>
-    <div>
-      <%= f.label :detail, "詳細" %>
-      <%= f.text_area :detail %>
-    </div>
-    <div>
-      <%= f.submit "更新する" %>
-    </div>
-  <% end %>
-  <div>
-    <%= link_to "医療機関情報へ戻る", shop_shops_my_shop_path %>
   </div>
 </div>
