@@ -166,6 +166,7 @@
 
         <% else %>
           <div>営業時間が登録されていません</div>
+          <div><%= link_to "営業時間を追加する", businesshour_shop_shop_path(@shop.id) %></div>
         <% end %>
       </table>
     </div>

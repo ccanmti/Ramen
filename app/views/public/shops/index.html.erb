@@ -28,6 +28,7 @@
           <th>店舗名</th>
           <th>住所</th>
           <th>ジャンル名</th>
+          <th>営業状況</th>
           <th>お気に入り数</th>
         </tr>
         <% @shops.each do |shop| %>
@@ -40,6 +41,105 @@
           <td><%= shop.name %></td>
           <td><%= shop.address %></td>
           <td><%= shop.genre.name %></td>
+          <!--月曜日のshopの営業状況判断-->
+          <% if Date.today.wday == 1 %>
+            <% shop.businesshours.each do |businesshour| %>
+              <% if businesshour.friday == true %>
+                <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
+                <% @shop_status = "Open" %>
+                <% else %>
+                <% end %>
+              <% else %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <!--火曜日のshopの営業状況判断-->
+          <% if Date.today.wday == 2 %>
+            <% shop.businesshours.each do |businesshour| %>
+              <% if businesshour.friday == true %>
+                <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
+                <% @shop_status = "Open" %>
+                <% else %>
+                <% end %>
+              <% else %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <!--水曜日のshopの営業状況判断-->
+          <% if Date.today.wday == 3 %>
+            <% shop.businesshours.each do |businesshour| %>
+              <% if businesshour.friday == true %>
+                <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
+                <% @shop_status = "Open" %>
+                <% else %>
+                <% end %>
+              <% else %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <!--木曜日のshopの営業状況判断-->
+          <% if Date.today.wday == 4 %>
+            <% shop.businesshours.each do |businesshour| %>
+              <% if businesshour.friday == true %>
+                <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
+                <% @shop_status = "Open" %>
+                <% else %>
+                <% end %>
+              <% else %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <!--金曜日のshopの営業状況判断-->
+          <% if Date.today.wday == 5 %>
+            <% shop.businesshours.each do |businesshour| %>
+              <% if businesshour.friday == true %>
+                <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
+                <% @shop_status = "Open" %>
+                <% else %>
+                <% end %>
+              <% else %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <!--土曜日のshopの営業状況判断-->
+          <% if Date.today.wday == 6 %>
+            <% shop.businesshours.each do |businesshour| %>
+              <% if businesshour.friday == true %>
+                <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
+                <% @shop_status = "Open" %>
+                <% else %>
+                <% end %>
+              <% else %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <!--日曜日のshopの営業状況判断-->
+          <% if Date.today.wday == 7 %>
+            <% shop.businesshours.each do |businesshour| %>
+              <% if businesshour.friday == true %>
+                <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
+                <% @shop_status = "Open" %>
+                <% else %>
+                <% end %>
+              <% else %>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <!--営業時間表示箇所-->
+          <% if @shop_status == "Open" %>
+            <td class="text-success font-weight-bold">Open</td>
+          <% else %>
+            <td class="text-danger font-weight-bold">Close</td>
+          <% end %>
+          <% @shop_status = "Close" %>
+
           <% if shop.favorited_by?(current_customer) %>
             <td>
               <%= link_to shop_favorites_path(shop), method: :delete do %>

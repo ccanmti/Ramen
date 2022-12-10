@@ -26,6 +26,14 @@
           <th>コメント数</th>
           <th><%= @shop.shop_comments.count %></th>
         </tr>
+        <tr>
+          <th>営業状況</th>
+            <% if @shop_status == "Open" %>
+              <td class="text-success font-weight-bold">Open</td>
+            <% else %>
+              <td class="text-danger font-weight-bold">Close</td>
+            <% end %></th>
+        </tr>
       </table>
     </div>
     <div class = "col-5">

@@ -7,6 +7,6 @@ class Shop::CommentsController < ApplicationController
   def destroy
     @shop_comment = ShopComment.find(params[:id])
     @shop_comment.destroy
-    redirect_to shop_comments_path
+    redirect_to shop_comments_index_path
   end
 end

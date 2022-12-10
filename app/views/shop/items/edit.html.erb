@@ -1,0 +1,13 @@
+  <%= image_tag @item.image, size: "300x300" %>
+  <%= form_with model: @item, url: shop_item_path(@item.id) do |f| %>
+    <%= f.text_field :name, class: 'form-control', required: true %>
+    <%= f.text_field :introduction, class: 'form-control', required: true %>
+    <%= f.text_field :price, class: 'form-control', required: true %>
+    <th><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --", required: true, class: "w-50" %></th>
+       <%= f.radio_button :is_active, true %>
+            <%= f.label :is_active, '販売中' %>
+            <%= f.radio_button :is_active, false %>
+            <%= f.label :is_active, '販売停止中' %>
+            <%= f.hidden_field :shop_id, :value => current_shop.id %>
+    <%= f.submit '更新', class: "btn btn-success" %>
+  <% end %>

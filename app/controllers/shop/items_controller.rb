@@ -7,11 +7,17 @@ class Shop::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.save!
-    redirect_to 
+    redirect_to
   end
 
   def edit
+    @item = Item.find(params[:id])
+  end
 
+  def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    redirect_to shop_items_path
   end
 
   private
