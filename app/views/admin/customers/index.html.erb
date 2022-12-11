@@ -14,11 +14,18 @@
         <% @customers.each do |customer| %>
         <tr>
           <th><%= customer.id %></th>
-          <th><%= customer.last_name %><%= customer.first_name %></th>
+          <th>
+          <%= link_to admin_customer_path(customer), style: "color: #000; text-decoration: underline;" do %>
+            <%= customer.last_name %><%= customer.first_name %>
+          <% end %>
+          </th>
           <th><%= customer.last_name_kana %><%= customer.first_name_kana %></th>
           <th><%= customer.email %></th>
-          <th><%= customer.is_deleted %></th>
-          <th><%= link_to "編集する", edit_admin_customer_path(customer.id), class: "btn btn-success" %></th>
+          <% if customer.is_deleted == false %>
+            <th class="text-success font-weight-bold">有効</th>
+          <% else %>
+            <th class="text-secondary font-weight-bold">退会</th>
+          <% end %>
         </tr>
         <% end %>
       </table>

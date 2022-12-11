@@ -1,13 +1,50 @@
-  <%= image_tag @item.image, size: "300x300" %>
-  <%= form_with model: @item, url: shop_item_path(@item.id) do |f| %>
-    <%= f.text_field :name, class: 'form-control', required: true %>
-    <%= f.text_field :introduction, class: 'form-control', required: true %>
-    <%= f.text_field :price, class: 'form-control', required: true %>
-    <th><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --", required: true, class: "w-50" %></th>
-       <%= f.radio_button :is_active, true %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-12">
+      <h2>ストアの商品編集</h2>
+    </div>
+    <div class = "col-5">
+      <%= image_tag @item.image, size: "300x300" %>
+    </div>
+
+    <div class = "col-7">
+      <table class = "table">
+        <%= form_with model: @item, url: shop_item_path(@item.id) do |f| %>
+        <tr>
+          <th><%= f.label :image, '商品画像' %></th>
+          <th><%= f.file_field :image, accept: "image/*", required: true %></th>
+        </tr>
+        <tr>
+          <th>商品名</th>
+          <th><%= f.text_field :name, class: 'form-control', required: true %></th>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <th><%= f.text_area :introduction, class: 'form-control', required: true %></th>
+        </tr>
+        <tr>
+          <th>販売価格(税込)</th>
+          <th><%= f.text_field :price, class: 'form-control', required: true %></th>
+        </tr>
+        <tr>
+          <th>ジャンル名</th>
+          <th><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --", required: true, class: "w-50" %></th>
+        </tr>
+        <tr>
+          <th>販売状況</th>
+          <th>
+            <%= f.radio_button :is_active, true %>
             <%= f.label :is_active, '販売中' %>
             <%= f.radio_button :is_active, false %>
             <%= f.label :is_active, '販売停止中' %>
-            <%= f.hidden_field :shop_id, :value => current_shop.id %>
-    <%= f.submit '更新', class: "btn btn-success" %>
-  <% end %>
+          </th>
+        <tr>
+          <th></th>
+          <th><%= f.submit '更新', class: "btn btn-success" %></th>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+
+  </div>
+</div>

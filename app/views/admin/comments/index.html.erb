@@ -1,0 +1,29 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col-12">
+      <h2>コメント一覧</h2>
+      <table class = "table">
+        <tr>
+          <th></th>
+          <th>会員名</th>
+          <th>コメントされた店舗</th>
+          <th>コメント内容</th>
+          <th></th>
+        </tr>
+        <% @comments.each do |c| %>
+        <tr>
+          <% if c.customer.image.attached? %>
+            <td><%= image_tag c.customer.image, size: "50x50" %></td>
+          <% else %>
+            <td><%= image_tag 'no_image', size: "50x50" %></td>
+          <% end %>
+          <td><%= c.customer.last_name %><%= c.customer.first_name %></td>
+          <td><%= c.shop.name %></td>
+          <td><%= c.comment %></td>
+          <td><%= link_to "削除", admin_comment_path(c.id), method: :delete, class: "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
-
-  # admin用
+  # admin用devise
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
   }
 
-  # public用
+  # public用devise
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
 
-  # shop用
+  # shop用devise
   devise_for :shops,skip: [:passwords], controllers: {
     registrations: "shop/registrations",
     sessions: 'shop/sessions'
@@ -23,7 +22,8 @@ Rails.application.routes.draw do
     get 'homes/top'
     resources :genres, only: [:index,:edit,:new,:update,:destroy,:create]
     resources :shops,  only: [:index,:edit,:show,:update,:destroy]
-    resources :customers,  only: [:index,:edit,:update]
+    resources :customers,  only: [:index,:edit,:update,:show]
+    resources :comments,  only: [:index,:destroy]
   end
 
   #public側routing
@@ -63,6 +63,7 @@ Rails.application.routes.draw do
     resources :products,  only: [:new,:index,:edit,:show,:update,:destroy,:create]
     resources :items,  only: [:new,:index,:edit,:update,:destroy,:create]
     resources :comments,  only: [:destroy]
+    resources :orders, only: [:index]
     get 'comments', to: 'comments#index', as: 'comments_index'
     resources :businesshours
     resources :shops do
