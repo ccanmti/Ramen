@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="m-md-2"><br></div>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <h4 class="col-md-2 mx-auto text-center" style="background-color:#DDD">
+      <strong>注文履歴一覧</strong>
+    </h4>
+
+    <div class="col-md-8"></div>
+  </div>
+
+  <div class="m-md-2"><br></div>
+
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-3 mx-auto text-left">
+        <strong>購入日時</strong>
+      </div>
+      <div class="col-md-2 mx-auto text-left">
+        <strong>購入者様</strong>
+      </div>
+      <div class="col-md-2 mx-auto text-left">
+        <strong>注文個数</strong>
+      </div>
+      <div class="col-md-3 mx-auto text-left">
+        <strong>注文ステータス</strong>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+
+  <% @orders.each do |order| %>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-3 mx-auto text-left">
+        <%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"), admin_order_path(order.id) %>
+          <div class="col-md-1"><br></div>
+      </div>
+
+
+      <div class="col-md-2 mx-auto text-left">
+        <%= order.customer.last_name %><%= order.customer.first_name %>
+          <div class="col-md-1"><br></div>
+      </div>
+
+
+      <div class="col-md-2 mx-auto text-left">
+        <% order.order_details.each do |order_detail|%>
+          <% @order_total += order_detail.amount %>
+        <% end %>
+        <%= @order_total %>
+        <% @order_total = 0 %>
+          <div class="col-md-1"><br></div>
+      </div>
+
+
+      <div class="col-md-3 mx-auto text-left">
+
+          <% if order.status == "waiting" %>
+            <p class="text-danger font-weight-bold">入金待ち</p>
+          <% elsif order.status == "confirmation" %>
+            <p class="text-success font-weight-bold">入金確認</p>
+          <% elsif order.status == "preparation" %>
+            <p class="text-primary font-weight-bold">配送準備中</p>
+          <% else %>
+            <p class="text-secondary font-weight-bold">配送済み</p>
+          <% end %>
+        <div class="col-md-1"><br></div>
+      </div>
+
+      <div class="col-md-1"></div>
+    </div>
+  <% end %>
+
+</div>

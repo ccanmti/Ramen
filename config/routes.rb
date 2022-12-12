@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'orders/index'
+    get 'orders/show'
+  end
   # admin用devise
   devise_for :admin,skip: [:registrations, :passwords], controllers: {
   sessions: "admin/sessions"
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
     resources :shops,  only: [:index,:edit,:show,:update,:destroy]
     resources :customers,  only: [:index,:edit,:update,:show]
     resources :comments,  only: [:index,:destroy]
+    resources :orders,  only: [:index,:show,:update]
   end
 
   #public側routing
@@ -63,7 +68,7 @@ Rails.application.routes.draw do
     resources :products,  only: [:new,:index,:edit,:show,:update,:destroy,:create]
     resources :items,  only: [:new,:index,:edit,:update,:destroy,:create]
     resources :comments,  only: [:destroy]
-    resources :orders, only: [:index]
+    resources :order_details,  only: [:index, :show]
     get 'comments', to: 'comments#index', as: 'comments_index'
     resources :businesshours
     resources :shops do
