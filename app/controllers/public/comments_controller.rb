@@ -1,6 +1,5 @@
 class Public::CommentsController < ApplicationController
   def create
-    #byebug
     shop = Shop.find(params[:shop_id])
     comment = current_customer.shop_comments.new(shop_comment_params)
     comment.shop_id = shop.id
@@ -35,12 +34,3 @@ class Public::CommentsController < ApplicationController
     params.permit(:comment, :product_id)
   end
 end
-
-#{"authenticity_token"=>"Cj5fCzBCyV0ZlD8WvnwrLv10ihbjQAYZdvqL6n-ooszIOb43G2G2NXXodgnxQ9s97qFlyTXk9QfkhllnR8wWAA",
-# "shop_comment" => {
-#   "product_id"=>"1",
-#   "comment"=>"hogehoge",
-#   "commit"=>"送信する",
-#   "controller"=>"public/comments", "action"=>"create", "shop_id"=>"1}}
-
-#params[:shop_comment][:comment]

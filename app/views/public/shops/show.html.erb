@@ -180,25 +180,28 @@
       <strong>ご自宅でもお店の味を楽しめます</strong>
     </div>
     <% @items.each do |item| %>
-    <div class = "col-4">
-    <%= link_to item_path(item.id) do %>
-    <%=image_tag item.image, size: "300x300" %>
+      <% if item.is_active == true %>
+      <div class = "col-4">
+      <%= link_to item_path(item.id) do %>
+      <%=image_tag item.image, size: "300x300" %>
+      <% end %>
+        <table class = "table">
+          <tr>
+            <th>商品名</th>
+            <th><%= item.name %></th>
+          </tr>
+          <tr>
+            <th>ジャンル名</th>
+            <th><%= item.genre.name %></th>
+          </tr>
+          <tr>
+            <th>税込価格</th>
+            <th><%= item.price %></th>
+          </tr>
+        </table>
+      </div>
+      <% else %>
     <% end %>
-      <table class = "table">
-        <tr>
-          <th>商品名</th>
-          <th><%= item.name %></th>
-        </tr>
-        <tr>
-          <th>ジャンル名</th>
-          <th><%= item.genre.name %></th>
-        </tr>
-        <tr>
-          <th>税込価格</th>
-          <th><%= item.price %></th>
-        </tr>
-      </table>
-    </div>
     <% end %>
   </div>
 </div>

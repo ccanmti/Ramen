@@ -1,8 +1,8 @@
 <div class = "container">
   <div class = "row">
     <div class = "offset-3 col-6">
+      <%= form_with model: @product, url: shop_products_path do |f| %>
       <table class = "table">
-        <%= form_with model: @product, url: shop_products_path do |f| %>
           <tr>
             <th><%= f.label :name, '商品画像' %></th>
             <th><%= f.file_field :image, accept: "image/*" %></th>
@@ -28,6 +28,7 @@
           <td></td>
           <td><%= f.submit '新規登録', class: "btn btn-success" %></td>
           </tr>
+        </table>
         <% end %>
       </div>
     </div>

@@ -2,6 +2,7 @@
   <div class = "row">
     <div class = "col-12">
       <h2>会員一覧</h2>
+      <% @customers.each do |customer| %>
       <table class ="table">
         <tr>
           <th>会員id</th>
@@ -11,7 +12,6 @@
           <th>会員ステータス</th>
           <th></th>
         </tr>
-        <% @customers.each do |customer| %>
         <tr>
           <th><%= customer.id %></th>
           <th>
@@ -23,12 +23,18 @@
           <th><%= customer.email %></th>
           <% if customer.is_deleted == false %>
             <th class="text-success font-weight-bold">有効</th>
+            <%= form_with model: @customers, url: admin_customer_withdraw_path(customer.id), method: :patch do |f| %>
+            <th><%= f.submit '退会', class: "btn btn-danger" %></th>
+            <% end %>
           <% else %>
             <th class="text-secondary font-weight-bold">退会</th>
+            <%= form_with model: @customers, url: admin_customer_reunion_path(customer.id), method: :patch do |f| %>
+            <th><%= f.submit '復会', class: "btn btn-success" %></th>
+            <% end %>
           <% end %>
         </tr>
-        <% end %>
       </table>
+      <% end %>
     </div>
   </div>
 </div>

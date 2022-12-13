@@ -2,7 +2,9 @@
   <div class="container mb-5">
       <div class="row">
         <div class='col-md-2'>
-          <%= link_to "LOGO", root_path %>
+          <%= link_to root_path do %>
+            <%= image_tag "logo1.png", size: "150x150" %>
+          <% end %>
         </div>
       <% if customer_signed_in? %>
       <div class= "col-3 d-flex align-items-center">

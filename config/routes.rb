@@ -24,6 +24,11 @@ Rails.application.routes.draw do
   #Admin側routing
   namespace :admin do
     get 'homes/top'
+    get 'unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/:id/withdraw' => 'customers#withdraw', as: 'customer_withdraw'
+    patch 'customers/:id/reunion' => 'customers#reunion', as: 'customer_reunion'
+    patch 'shops/:id/withdraw' => 'shops#withdraw', as: 'shop_withdraw'
+    patch 'shops/:id/reunion' => 'shops#reunion', as: 'shop_reunion'
     resources :genres, only: [:index,:edit,:new,:update,:destroy,:create]
     resources :shops,  only: [:index,:edit,:show,:update,:destroy]
     resources :customers,  only: [:index,:edit,:update,:show]
