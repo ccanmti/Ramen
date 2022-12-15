@@ -2,6 +2,16 @@
 
 class Shop::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+    before_action :shop_state, only: [:create]
+
+
+  def shop_state
+    @shop = Shop.find_by(email: params[:shop][:email])
+    return if !@shop
+    if @shop.valid_password?(params[:shop][:password]) && @shop.is_deleted
+      redirect_to new_shop_registration_path
+    end
+  end
 
   # GET /resource/sign_in
   # def new

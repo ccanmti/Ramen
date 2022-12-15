@@ -107,9 +107,14 @@ class Shop::ShopsController < ApplicationController
   end
 
   def unsubscribe
+    @shop = current_shop
   end
 
   def withdraw
+    @shop = current_shop
+    @shop.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 
   def businesshour
@@ -120,6 +125,6 @@ class Shop::ShopsController < ApplicationController
   private
 
   def shop_params
-    params.require(:shop).permit(:name, :email, :postal_code, :address, :telephone_number, :image, :genre_id)
+    params.require(:shop).permit(:name, :email, :postal_code, :address, :telephone_number, :image, :genre_id, :is_deleted)
   end
 end

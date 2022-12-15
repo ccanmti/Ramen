@@ -1,32 +1,31 @@
-<div class = "container">
-  <div class = "row">
-    <div class = "col-12">
-      <h2>ラーメン一覧</h2>
-    </div>
+<div class="card-list-container py-5">
+  <div class = "row o-gutters" >
     <% @products.each do |product| %>
-    <div class = "col-4">
-    <%= link_to product_path(product.id) do %>
-    <%=image_tag product.image, size: "300x300" %>
-    <% end %>
-      <table class = "table">
-        <tr>
-          <th>商品名</th>
-          <th><%= product.name %></th>
-        </tr>
-        <tr>
-          <th>ジャンル名</th>
-          <th><%= product.genre.name %></th>
-        </tr>
-        <tr>
-          <th>税込価格</th>
-          <th><%= product.price %></th>
-        </tr>
-        <tr>
-          <th>販売店舗</th>
-          <th><%= product.shop.name %></th>
-        </tr>
-      </table>
-    </div>
+    <div class = "offset-1 col-3">
+      <div class="card mx-auto mt-4 shadow-lg">
+        <%= link_to product_path(product.id) do %>
+        <%=image_tag product.image, size: "332x250" %>
+        <% end %>
+          <table class = "table">
+            <tr>
+              <th>商品名</th>
+              <th><%= product.name %></th>
+            </tr>
+            <tr>
+              <th>ジャンル名</th>
+              <th><%= product.genre.name %></th>
+            </tr>
+            <tr>
+              <th>税込価格</th>
+              <th><%= product.price %></th>
+            </tr>
+            <tr>
+              <th>販売店舗</th>
+              <th><%= product.shop.name %></th>
+            </tr>
+          </table>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

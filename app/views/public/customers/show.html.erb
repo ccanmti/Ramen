@@ -1,6 +1,9 @@
 <div class = "container">
   <div class = "row">
-    <div class = "offset-1 col-5">
+    <div class = "offset-3 col-12">
+      <h2>マイページ</h2>
+    </div>
+    <div class = "offset-3 col-5">
     <% if @customer.image.attached? %>
       <%= image_tag @customer.image, size: "200x200" %>
     <% else %>
@@ -33,15 +36,28 @@
         </tr>
         <tr>
           <th></th>
-          <th><%= link_to "情報を編集",customers_information_edit_path %></th>
+          <th><%= link_to "情報を編集",customers_information_edit_path, class:"btn btn-success" %></th>
         </tr>
       </table>
     </div>
-    <div class = "col-5">
-      <%= link_to "コメント一覧へ",       comments_path %>
-      <%= link_to "お気に入り店舗一覧へ", favorites_path %>
-      <%= link_to "注文履歴一覧へ",       orders_path %>
-      <%= link_to "配送先一覧へ",         deliveries_path %>
+    <div class = "col-3">
+      <table class = "table">
+        <tr>
+          <th>〜リンク先一覧〜</th>
+        <tr>
+        <tr>
+          <th><%= link_to "コメント一覧",comments_path %></th>
+        </tr>
+        <tr>
+          <th><%= link_to "お気に入り店舗一覧",favorites_path %>
+        </tr>
+        <tr>
+          <th><%= link_to "注文履歴一覧",orders_path %></th>
+        </tr>
+        <tr>
+          <th><%= link_to "配送先一覧",deliveries_path %></th>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

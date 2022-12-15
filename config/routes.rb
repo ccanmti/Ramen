@@ -67,8 +67,8 @@ Rails.application.routes.draw do
     get   'shops/my_shop'          => 'shops#show'
     get   'shops/information/edit' => 'shops#edit'
     patch 'shops/information'      => 'shops#update'
-    get   'shops/unsubscribe'      => 'shops#unsubscribe'
-    patch 'shops/withdraw'         => 'shops#withdraw'
+    get   ':id/unsubscribe'      => 'shops#unsubscribe'     , as: 'unsucribe'
+    patch ':id/withdraw'         => 'shops#withdraw'        , as: 'withdraw'
     patch 'businesshours/edit/update_all' => 'businesshours#update_all'
     resources :products,  only: [:new,:index,:edit,:show,:update,:destroy,:create]
     resources :items,  only: [:new,:index,:edit,:update,:destroy,:create]
