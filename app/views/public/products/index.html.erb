@@ -6,6 +6,7 @@
         <%= link_to product_path(product.id) do %>
         <%=image_tag product.image, size: "332x250" %>
         <% end %>
+        <div class="card-body">
           <table class = "table">
             <tr>
               <th>商品名</th>
@@ -24,6 +25,7 @@
               <th><%= product.shop.name %></th>
             </tr>
           </table>
+          </div>
         </div>
       </div>
     <% end %>

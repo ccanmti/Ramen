@@ -1,6 +1,8 @@
 <div class = "container">
   <div class = "row">
-
+    <div class = "col-12">
+      <h2>店舗詳細情報</h2>
+    </div>
     <div class = "col-5">
       <%= image_tag @shop.image,size: "400x400" %>
     </div>
@@ -28,10 +30,7 @@
         </tr>
         <tr>
           <th>ジャンル名</th>
-          <th><%= @shop.genre_id %></th>
-        </tr>
-        <tr>
-          <th><%= link_to "編集する",edit_admin_genre_path %></th>
+          <th><%= @shop.genre.name %></th>
         </tr>
       </table>
     </div>

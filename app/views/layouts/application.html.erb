@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html class = "h-100">
   <head>
-    <title>Ramen</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CommuRamen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,11 +10,11 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="content">
+  <body class="fixed">
     <%= render 'layouts/header', customer: current_customer %>
-    <%= yield %>
-    </div>
+    <main>
+      <%= yield %>
+    </main>
     <%= render 'layouts/footer' %>
   </body>
 </html>

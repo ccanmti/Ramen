@@ -1,5 +1,8 @@
 <div class = "container">
   <div class = "row">
+    <div class = "col-12">
+      <h2>商品編集画面</h2>
+    </div>
     <div class = "col-5">
       <%= image_tag @product.image, size: "400x400" %>
     </div>
@@ -16,7 +19,7 @@
       </tr>
       <tr>
         <th><%= f.label :introduction, '商品説明' %></th>
-        <th><%= f.text_field :introduction, placeholder: "商品説明", required: true, size: "44" %></th>
+        <th><%= f.text_area :introduction, placeholder: "商品説明", required: true, size: "44" %></th>
       </tr>
       <tr>
         <th><%= f.label :price, '商品価格(税込)' %></th>
