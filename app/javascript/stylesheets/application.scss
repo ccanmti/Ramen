@@ -5,7 +5,7 @@
 .fixed{
     min-height: 100vh;
     position: relative;
-    padding-bottom: 120px;/*←footerの高さ*/
+    padding-bottom: 120px;
     box-sizing: border-box;
 }
 
@@ -16,6 +16,5 @@ footer{
     text-align: center;
     padding: 30px 0;
 
- position: absolute;/*←絶対位置*/
-    bottom: 0; /*下に固定*/
-}
+ position: absolute;
+    bottom: 0;
