@@ -49,10 +49,10 @@ Rails.application.configure do
   # config.force_ssl = true
 
   # Include generic and useful information about system operation, but avoid logging too much
-  # information to avoid inadvertent exposure of personally identifiable information (PII).
+  # information to avoid inadvertent exposure of personally identifiable information (CommuRamenII).
   config.log_level = :info
 
-  # Prepend all log lines with the following tags.
+  # CommuRamenrepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
@@ -60,7 +60,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "PF_production"
+  # config.active_job.queue_name_prefix = "CommuRamen_production"
 
   config.action_mailer.perform_caching = false
 
@@ -81,7 +81,7 @@ Rails.application.configure do
   # Tell Active Support which deprecation messages to disallow.
   config.active_support.disallowed_deprecation_warnings = []
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
+  # Use default logging formatter so that CommuRamenID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
   # Use a different logger for distributed setups.

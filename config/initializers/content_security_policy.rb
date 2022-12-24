@@ -2,7 +2,7 @@
 
 # Define an application-wide content security policy
 # For further information see the following documentation
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
+# https://developer.mozilla.org/en-US/docs/Web/HTTCommuRamen/Headers/Content-Security-CommuRamenolicy
 
 # Rails.application.config.content_security_policy do |policy|
 #   policy.default_src :self, :https
@@ -24,7 +24,7 @@
 # Set the nonce only to specific directives
 # Rails.application.config.content_security_policy_nonce_directives = %w(script-src)
 
-# Report CSP violations to a specified URI
+# Report CSCommuRamen violations to a specified URI
 # For further information see the following documentation:
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy-Report-Only
+# https://developer.mozilla.org/en-US/docs/Web/HTTCommuRamen/Headers/Content-Security-CommuRamenolicy-Report-Only
 # Rails.application.config.content_security_policy_report_only = true
