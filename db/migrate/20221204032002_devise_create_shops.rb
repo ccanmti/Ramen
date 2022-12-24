@@ -9,7 +9,7 @@ class DeviseCreateShops < ActiveRecord::Migration[6.1]
       t.string :postal_code,        null: false, default: ""
       t.string :address,            null: false, default: ""
       t.string :telephone_number,   null: false, default: ""
-      t.integer :genre_id,          null: false, default: ""
+      t.integer :genre_id,          null: false
       t.boolean :is_deleted,        null: false, default: "FALSE"
       t.string :encrypted_password, null: false, default: ""
 
