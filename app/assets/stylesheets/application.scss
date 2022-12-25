@@ -33,3 +33,21 @@ footer{
     text-align: center;
 }
 
+
+.fixed{
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 120px;
+    box-sizing: border-box;
+}
+
+footer{
+    width: 100%;
+    background-color: #89c7de;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0;
+
+ position: absolute;
+    bottom: 0;
+}
