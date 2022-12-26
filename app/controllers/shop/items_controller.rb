@@ -6,6 +6,9 @@ class Shop::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    if @item.introduction.blank?
+      @item.introduction = ""
+    end
     @item.save!
     redirect_to
   end
