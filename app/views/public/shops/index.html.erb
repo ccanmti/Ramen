@@ -47,7 +47,7 @@
           <!--月曜日のshopの営業状況判断-->
           <% if Date.today.wday == 1 %>
             <% shop.businesshours.each do |businesshour| %>
-              <% if businesshour.friday == true %>
+              <% if businesshour.monday == true %>
                 <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
                 <% @shop_status = "Open" %>
                 <% else %>
@@ -60,7 +60,7 @@
           <!--火曜日のshopの営業状況判断-->
           <% if Date.today.wday == 2 %>
             <% shop.businesshours.each do |businesshour| %>
-              <% if businesshour.friday == true %>
+              <% if businesshour.tuesday == true %>
                 <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
                 <% @shop_status = "Open" %>
                 <% else %>
@@ -73,7 +73,7 @@
           <!--水曜日のshopの営業状況判断-->
           <% if Date.today.wday == 3 %>
             <% shop.businesshours.each do |businesshour| %>
-              <% if businesshour.friday == true %>
+              <% if businesshour.wednesday == true %>
                 <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
                 <% @shop_status = "Open" %>
                 <% else %>
@@ -86,7 +86,7 @@
           <!--木曜日のshopの営業状況判断-->
           <% if Date.today.wday == 4 %>
             <% shop.businesshours.each do |businesshour| %>
-              <% if businesshour.friday == true %>
+              <% if businesshour.thursday == true %>
                 <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
                 <% @shop_status = "Open" %>
                 <% else %>
@@ -112,7 +112,7 @@
           <!--土曜日のshopの営業状況判断-->
           <% if Date.today.wday == 6 %>
             <% shop.businesshours.each do |businesshour| %>
-              <% if businesshour.friday == true %>
+              <% if businesshour.saturday == true %>
                 <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
                 <% @shop_status = "Open" %>
                 <% else %>
@@ -125,7 +125,7 @@
           <!--日曜日のshopの営業状況判断-->
           <% if Date.today.wday == 7 %>
             <% shop.businesshours.each do |businesshour| %>
-              <% if businesshour.friday == true %>
+              <% if businesshour.sunday == true %>
                 <% if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i) %>
                 <% @shop_status = "Open" %>
                 <% else %>

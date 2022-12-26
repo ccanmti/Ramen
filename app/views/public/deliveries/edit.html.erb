@@ -1,6 +1,27 @@
-    <%= form_with model: @delivery, url: delivery_path do |f| %>
-      <%= f.text_field :name, class: 'form-control', required: true %>
-      <%= f.text_field :postal_code, class: 'form-control', required: true %>
-      <%= f.text_field :address, class: 'form-control', required: true %>
-      <%= f.submit '情報を更新', class: "btn btn-success" %>
-    <% end %>
+<div class = "container">
+  <div class = "row">
+    <div class = "offset-3 col-6">
+      <h2>配送先編集</h2>
+      <%= form_with model: @delivery, url: delivery_path do |f| %>
+      <table class = "table">
+        <tr>
+          <th>宛名</th>
+          <th><%= f.text_field :name, class: 'form-control', required: true %></th>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <th><%= f.text_field :postal_code, class: 'form-control', required: true %></th>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <th><%= f.text_field :address, class: 'form-control', required: true %></th>
+        </tr>
+        <tr>
+          <th></th>
+          <th><%= f.submit '情報を更新', class: "btn btn-success" %></th>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

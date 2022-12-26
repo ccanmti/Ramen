@@ -20,7 +20,7 @@ class Public::ShopsController < ApplicationController
     #月曜日のshopの営業状況判断
     if Date.today.wday == 1
       @businesshours.each do |businesshour|
-        if businesshour.friday == true
+        if businesshour.monday == true
           if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i)
           @shop_status = "Open"
           else
@@ -33,7 +33,7 @@ class Public::ShopsController < ApplicationController
     #火曜日のshopの営業状況判断
     if Date.today.wday == 2
       @businesshours.each do |businesshour|
-        if businesshour.friday == true
+        if businesshour.tuesday == true
           if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i)
           @shop_status = "Open"
           else
@@ -46,7 +46,7 @@ class Public::ShopsController < ApplicationController
     #水曜日のshopの営業状況判断
     if Date.today.wday == 3
       @businesshours.each do |businesshour|
-        if businesshour.friday == true
+        if businesshour.wednesday == true
           if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i)
           @shop_status = "Open"
           else
@@ -59,7 +59,7 @@ class Public::ShopsController < ApplicationController
     #木曜日のshopの営業状況判断
     if Date.today.wday == 4
       @businesshours.each do |businesshour|
-        if businesshour.friday == true
+        if businesshour.thursday == true
           if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i)
           @shop_status = "Open"
           else
@@ -84,7 +84,7 @@ class Public::ShopsController < ApplicationController
     #土曜日のshopの営業状況判断
     if Date.today.wday == 6
       @businesshours.each do |businesshour|
-        if businesshour.friday == true
+        if businesshour.saturday == true
           if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i)
           @shop_status = "Open"
           else
@@ -97,7 +97,7 @@ class Public::ShopsController < ApplicationController
     #日曜日のshopの営業状況判断
     if Date.today.wday == 7
       @businesshours.each do |businesshour|
-        if businesshour.friday == true
+        if businesshour.sunday == true
           if Time.current.strftime('%H%M').to_i.between?(businesshour.start_time.strftime('%H%M').to_i, businesshour.end_time.strftime('%H%M').to_i)
           @shop_status = "Open"
           else

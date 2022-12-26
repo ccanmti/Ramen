@@ -12,24 +12,24 @@
           <th>電話番号</th>
           <th>ステータス</th>
           <th></th>
-          <th></th>
         </tr>
         <% @shops.each do |shop| %>
         <tr>
           <th><%= shop.id %></th>
-          <th><%= shop.name %></th>
+          <th>
+            <%= link_to admin_shop_path(shop.id), style: "color: #000; text-decoration: underline;" do %>
+              <%= shop.name %>
+            <% end %>
+          </th>
           <th><%= shop.email %></th>
           <th><%= shop.telephone_number %></th>
           <% if shop.is_deleted == false %>
             <th class="text-success font-weight-bold">有効</th>
-            <th><%= link_to "詳細", admin_shop_path(shop.id), class: "btn btn-success" %></th>
             <%= form_with model: @shops, url: admin_shop_withdraw_path(shop.id), method: :patch do |f| %>
             <th><%= f.submit '退会', class: "btn btn-danger" %></th>
             <% end %>
           <% else %>
-            <th><%= link_to "詳細", admin_shop_path(shop.id), class: "btn btn-success" %></th>
             <th class="text-secondary font-weight-bold">退会</th>
-            <th><%= link_to "詳細", admin_shop_path(shop.id), class: "btn btn-success" %></th>
             <%= form_with model: @shops, url: admin_shop_reunion_path(shop.id), method: :patch do |f| %>
             <th><%= f.submit '復会', class: "btn btn-success" %></th>
             <% end %>

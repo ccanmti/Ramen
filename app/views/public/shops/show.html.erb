@@ -157,8 +157,10 @@
       <h2>Menu</h2>
     </div>
     <% @products.each do |product| %>
-    <div class = "col-4">
-    <%=image_tag product.image, size: "300x300" %>
+    <div class = "col-3">
+    <%= link_to product_path(product.id) do %>
+    <%=image_tag product.image, size: "200x200" %>
+    <% end %>
       <table class = "table">
         <tr>
           <th>商品名</th>
@@ -181,9 +183,9 @@
     </div>
     <% @items.each do |item| %>
       <% if item.is_active == true %>
-      <div class = "col-4">
+      <div class = "col-3">
       <%= link_to item_path(item.id) do %>
-      <%=image_tag item.image, size: "300x300" %>
+      <%=image_tag item.image, size: "200x200" %>
       <% end %>
         <table class = "table">
           <tr>
@@ -201,24 +203,58 @@
         </table>
       </div>
       <% else %>
-    <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
-
-<div>
-  <p>コメント件数：<%= @shop.shop_comments.count %></p>
-  <% @shop.shop_comments.each do |shop_comment| %>
-    <%= shop_comment.customer.last_name %><%= shop_comment.customer.first_name %>
-    <%= shop_comment.product.name %>
-    <%= shop_comment.created_at.strftime('%Y/%m/%d') %><%= shop_comment.comment %>
+<div class="offset-1 card-list-container ">
+  <h2>新着コメント</h2>
+  <div class = "row o-gutters" >
+  <% @shop.shop_comments.each.each do |shop| %>
+    <div class = "col-3">
+      <div class="card mx-auto mt-4 shadow-lg">
+        <%=image_tag shop.customer.image, style: "width: 100%; height: 100px;" %>
+        <div class="card-body">
+          <table class = "table">
+            <tr>
+              <th>ユーザー名</th>
+              <th><%= shop.customer.last_name %><%= shop.customer.first_name %></th>
+            </tr>
+            <tr>
+              <th>商品名</th>
+              <th><%= shop.product.name %></th>
+            </tr>
+            <tr>
+              <th>コメント</th>
+              <th><%= shop.comment %></th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
   <% end %>
+  </div>
 </div>
-<div>
-  <%= form_with url: shop_comments_path(@shop), method: :post do |f| %>
-  <%= f.label :product_id, '商品名' %>
-  <%= f.select :product_id, options_from_collection_for_select(@products, :id, :name),prompt: "-- 選択してください --", required: true, class: "w-50" %>
-  <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
+<% if customer_signed_in? %>
+<div class = "mt-4 offset-3 col-12">
+  <h2>コメント投稿</h2>
+</div>
+<div class = "mt-4 offset-3 col-5">
+    <%= form_with url: shop_comments_path(@shop), method: :post do |f| %>
+    <table class = "table">
+      <tr>
+        <th><%= f.label :product_id, '商品名' %></th>
+        <th><%= f.select :product_id, options_from_collection_for_select(@products, :id, :name),prompt: "ラーメンを選択して下さい", required: true, class: "w-50" %></th>
+      </tr>
+      <tr>
+        <th>コメント入力</th>
+        <th><%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %></th>
+      </tr>
+      <tr>
+        <th></th>
+        <th><%= f.submit "送信する", class:"btn btn-success" %></th>
+      </tr>
+    <% end %>
+    </table>
   <% end %>
 </div>

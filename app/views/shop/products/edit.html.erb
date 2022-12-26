@@ -7,8 +7,8 @@
       <%= image_tag @product.image, size: "400x400" %>
     </div>
     <div class = "col-7">
-      <table class = "table">
       <%= form_with model: @product, url: shop_product_path(@product.id) do |f| %>
+      <table class = "table">
       <tr>
         <th><%= f.label :image, '商品画像' %></th>
         <th><%= f.file_field :image, accept: "image/*", required: true %></th>
@@ -34,8 +34,8 @@
         <th><%= f.submit '変更を保存', class: "btn btn-success" %></th>
       </tr>
         <%= f.hidden_field :shop_id, :value => current_shop.id %>
-      <% end %>
       </table>
+      <% end %>
     </div>
   </div>
 </div>

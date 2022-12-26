@@ -1,18 +1,48 @@
 <div class = "container">
   </div class = "row" >
     <div class = "offset-2 col-8">
-        <div class="card img-container">
-        <img src="assets/ramen.jpg", style="width: 100%; height: 200px;">
+      <div class="card img-container">
+      <img src="assets/ramen.jpg", style="width: 100%; height: 200px; opacity: 0.5;">
         <div class="d-flex justify-content-center align-items-center card-img-overlay">
-          <div class="text-left border border-dark p-3 mb-2 bg-white">
-          <p>ようこそ、Commu Ramen</p>
+          <div class="text-center p-3 mb-2 ">
+          <font size="6" face="fantasy">Commu Ramenへようこそ</font></br>
+          <font size="6" face="fantasy">あなたが探す一品を、ここで探そう</font>
           </div>
         </div>
       </div>
     </div>
+    <div class = "offset-2 col-12">
+      <h2>New Shops</h2>
+    </div>
+
+    <div class="offset-2 card-list-container ">
+      <div class = "row o-gutters" >
+      <% @shops.each do |shop| %>
+        <div class = "col-3">
+          <div class="card mx-auto mt-4 shadow-lg">
+            <%= link_to shop_path(shop.id) do %>
+            <%=image_tag shop.image, style: "width: 100%; height: 200px;" %>
+            <% end %>
+            <div class="card-body">
+              <table class = "table">
+                <tr>
+                  <th>店舗名</th>
+                  <th><%= shop.name %></th>
+                </tr>
+                <tr>
+                  <th>ジャンル</th>
+                  <th><%= shop.genre.name %></th>
+                </tr>
+                <tr>
+                  <th>住所</th>
+                  <th><%= shop.address %></th>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
   </div>
 </div>
-
-
-
-<p class="color_white bkcolor_black">文字色と背景色を変更するよ。<br>文字色は白色だよ。<br>背景色は黒だよ。</p>

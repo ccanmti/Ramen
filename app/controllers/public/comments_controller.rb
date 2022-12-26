@@ -31,6 +31,6 @@ class Public::CommentsController < ApplicationController
   private
 
   def shop_comment_params
-    params.permit(:comment, :product_id)
+    params.permit(:comment, :product_id, :customer_id, :shop_id)
   end
 end
