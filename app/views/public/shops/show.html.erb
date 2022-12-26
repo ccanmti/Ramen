@@ -240,7 +240,7 @@
   <h2>コメント投稿</h2>
 </div>
 <div class = "mt-4 offset-3 col-5">
-    <%= form_with url: shop_comments_path(@shop), method: :post do |f| %>
+    <%= form_with model: @shop_comment, url: shop_comments_path(@shop), method: :post do |f| %>
     <table class = "table">
       <tr>
         <th><%= f.label :product_id, '商品名' %></th>
