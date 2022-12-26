@@ -1,6 +1,3 @@
-// Place all the styles related to the public/homes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
 .img-container{
   height: 100vh;
   width: 100%;
@@ -12,6 +9,16 @@
   background-blend-mode:lighten;
   //ついでに画像をページ全体に表示する
   background-size: 100%;
+}
+
+.haikei{
+  width: 400px;
+  height: 200px;
+  background-image: url(ramen.jpg);
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  opacity: 0.3;
 }
 
 p {

@@ -1,9 +1,9 @@
 class Public::ShopsController < ApplicationController
   def index
-    @shops = Shop.all
+    @shops = Shop.all.page(params[:page]).per(8).order('created_at DESC')
     @genres = Genre.all
     @q = Shop.ransack(params[:q])
-    @shops = @q.result(distinct: true)
+
 
     @shop_status = "Close"    #営業状況を初期化
 

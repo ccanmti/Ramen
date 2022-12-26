@@ -20,18 +20,22 @@
           <td><%= shop.name %></td>
           <td><%= shop.address %></td>
           <td><%= shop.genre.name %></td>
-          <% if shop.favorited_by?(current_customer) %>
-            <td>
-              <%= link_to shop_favorites_path(shop), method: :delete do %>
-                ♥<%= shop.favorites.count %> いいね
+          <% if customer_signed_in? %>
+            <% if shop.favorited_by?(current_customer) %>
+              <td>
+                <%= link_to shop_favorites_path(shop), method: :delete do %>
+                  ♥<%= shop.favorites.count %> いいね
+                <% end %>
+              </td>
+            <% else %>
+              <td>
+              <%= link_to shop_favorites_path(shop), method: :post do %>
+                ♡<%= shop.favorites.count %> いいね
               <% end %>
-            </td>
-          <% else %>
-            <td>
-            <%= link_to shop_favorites_path(shop), method: :post do %>
-              ♡<%= shop.favorites.count %> いいね
+              </td>
             <% end %>
-            </td>
+          <% else %>
+            <td><%= shop.favorites.count %></td>
           <% end %>
           </tr>
         <% end %>

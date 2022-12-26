@@ -13,7 +13,7 @@ class Shop::RegistrationsController < Devise::RegistrationsController
   def create
     # super
     Shop.create!(params.require(:shop).permit(:name, :email,:postal_code,:address,:telephone_number,:genre_id, :password,:image))
-    redirect_to admin_homes_top_path
+    redirect_to admin_shops_path
   end
 
   # GET /resource/edit
@@ -62,7 +62,7 @@ class Shop::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   def after_sign_up_path_for(resource)
-    admin_homes_top_path
+    admin_shops_path
   end
 
   def configure_permitted_parameters

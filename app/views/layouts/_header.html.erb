@@ -15,7 +15,6 @@
       <div class= "col-3 d-flex align-items-center">
         <p style ="color: white">ようこそ <%= customer.last_name %><%= customer.first_name %>さん</p>
       </div>
-          <li class="nav-item"><%= link_to 'アバウト',about_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'マイページ',customers_my_page_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '店舗一覧',shops_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'ラーメン一覧',products_path, class: 'nav-link text-dark' %></li>
@@ -38,7 +37,6 @@
           <li class="nav-item"><%= link_to 'コメント一覧',shop_comments_index_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'ログアウト',destroy_shop_session_path, method: :delete, class: 'nav-link text-dark' %></li>
       <% else %>
-          <li class="nav-item"><%= link_to 'アバウト',about_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '店舗一覧',shops_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '商品一覧',products_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '新規登録',new_customer_registration_path, class: 'nav-link text-dark' %></li>
