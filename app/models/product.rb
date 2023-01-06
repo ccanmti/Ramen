@@ -3,4 +3,5 @@ class Product < ApplicationRecord
   belongs_to :shop
   belongs_to :genre
   has_many :shop_comments, dependent: :destroy
+  has_many :tags, dependent: :destroy
 end

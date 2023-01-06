@@ -26,6 +26,10 @@ class Shop::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.save!
+    tags = Vision.get_image_data(@product.image)
+    tags.each do |tag|
+      @product.tags.create(name: tag)
+    end
     redirect_to shop_products_path
   end
 

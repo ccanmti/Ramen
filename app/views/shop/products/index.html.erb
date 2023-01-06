@@ -22,6 +22,11 @@
             <th>ジャンル名</th>
             <th><%= product.genre.name %></th>
           </tr>
+          <tr>
+            <% product.tags.each do |tag| %>
+            <th class="label"><%= tag.name %></th>
+            <% end %>
+          </tr>
         </table>
       </div>
       <% end %>
