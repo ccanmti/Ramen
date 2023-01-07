@@ -27,7 +27,11 @@
               <th>販売店舗</th>
               <th><%= product.shop.name %></th>
             </tr>
-            
+            <tr>
+              <% product.tags.each do |tag| %>
+              <th class="label"><%= tag.name %></th>
+              <% end %>
+            </tr>
           </table>
           </div>
         </div>
