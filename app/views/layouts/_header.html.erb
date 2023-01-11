@@ -11,16 +11,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-      <% if customer_signed_in? %>
-      <div class= "col-3 d-flex align-items-center">
-        <p style ="color: white">ようこそ <%= customer.last_name %><%= customer.first_name %>さん</p>
-      </div>
+        <% if customer_signed_in? %>
+        <div class= "col-3 d-flex align-items-center">
+          <p style ="color: white">ようこそ <%= customer.last_name %><%= customer.first_name %>さん</p>
+        </div>
           <li class="nav-item"><%= link_to 'マイページ',customers_my_page_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '店舗一覧',shops_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'ラーメン一覧',products_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'カート内商品',cart_items_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'ログアウト',destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %></li>
-      <% elsif admin_signed_in? %>
+        <% elsif admin_signed_in? %>
           <li class="nav-item"><%= link_to '店舗の新規登録',new_shop_registration_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '店舗一覧',admin_shops_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '会員一覧',admin_customers_path, class: 'nav-link text-dark' %></li>
@@ -28,7 +28,7 @@
           <li class="nav-item"><%= link_to 'コメント一覧',admin_comments_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '注文一覧',admin_orders_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'ログアウト',destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %></li>
-      <% elsif shop_signed_in? %>
+        <% elsif shop_signed_in? %>
           <li class="nav-item"><%= link_to 'マイショップ',shop_shops_my_shop_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '商品の新規登録',new_shop_product_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '商品一覧',shop_products_path, class: 'nav-link text-dark' %></li>
@@ -36,12 +36,12 @@
           <li class="nav-item"><%= link_to '注文履歴一覧',shop_order_details_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'コメント一覧',shop_comments_index_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'ログアウト',destroy_shop_session_path, method: :delete, class: 'nav-link text-dark' %></li>
-      <% else %>
+        <% else %>
           <li class="nav-item"><%= link_to '店舗一覧',shops_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '商品一覧',products_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to '新規登録',new_customer_registration_path, class: 'nav-link text-dark' %></li>
           <li class="nav-item"><%= link_to 'ログイン',new_customer_session_path, class: 'nav-link text-dark' %></li>
-      <% end %>
+        <% end %>
         </ul>
       </div>
     </div>

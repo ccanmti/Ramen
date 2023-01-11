@@ -1,7 +1,9 @@
 class Admin::CustomersController < ApplicationController
+  # 管理者側の顧客一覧機能
   def index
     @customers = Customer.all
   end
+
 
   def show
     @customer = Customer.find(params[:id])
