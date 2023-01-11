@@ -1,10 +1,9 @@
 class Public::ShopsController < ApplicationController
+  # 顧客側の店舗一覧
   def index
-
     @genres = Genre.all
     @q = Shop.ransack(params[:q])
-
-    if params[:q].blank?
+    if params[:q].blank?    #検索欄が空の場合下記を実行
       @shops = Shop.all.page(params[:page]).per(8).order('created_at DESC')
     else
       @shops = @q.result(distinct: true).page(params[:page]).per(8).order('created_at DESC')

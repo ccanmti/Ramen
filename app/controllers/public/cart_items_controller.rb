@@ -38,7 +38,7 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-# ストロングパラメータの設定
+  # ストロングパラメータの設定
   private
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :customer_id, :amount, :shop_id)
