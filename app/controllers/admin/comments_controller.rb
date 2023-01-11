@@ -1,5 +1,5 @@
 class Admin::CommentsController < ApplicationController
-  # 管理者側のコメント一覧機能
+  # 管理者側のコメント一覧
   def index
     @comments = ShopComment.all
   end
