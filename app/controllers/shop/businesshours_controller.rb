@@ -1,4 +1,5 @@
 class Shop::BusinesshoursController < ApplicationController
+  # 営業時間の新規登録
   def create
     @businesshour = Businesshour.new(businesshour_params)
     if @businesshour.save!
@@ -9,11 +10,13 @@ class Shop::BusinesshoursController < ApplicationController
     end
   end
 
+  # 営業時間の編集
   def edit
     @businesshours = current_shop.businesshours
     @businesshour = Businesshour.find(params[:id])
   end
 
+  #営業時間の更新
   def update
     @businesshour = Businesshour.find(params[:id])
     if @businesshour.update!(businesshour_params)
@@ -25,20 +28,22 @@ class Shop::BusinesshoursController < ApplicationController
     end
   end
 
+  # 営業時間の全更新
   def update_all
     @businesshours = current_shop.businesshours
     @businesshours.update_all(businesshour_params)
     redirect_to request.referer
   end
 
+  # 営業時間削除
   def destroy
     @businesshour = Businesshour.find(params[:id])
     @businesshour.destroy
     redirect_to request.referer, notice: "営業時間を削除しました"
   end
 
+# 営業時間のストロングパラメータ
   private
-
   def businesshour_params
     params.require(:businesshour).permit(:start_time, :end_time, :monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday, :holiday, :detail, :shop_id)
   end

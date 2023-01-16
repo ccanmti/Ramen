@@ -7,7 +7,7 @@ class Public::FavoritesController < ApplicationController
   # 店舗にいいねの登録
   def create
     shop = Shop.find(params[:shop_id])
-    favorite = current_customer.favorites.new(shop_id: shop.id)     #いいねがすでにされている場合はいいね
+    favorite = current_customer.favorites.new(shop_id: shop.id)     #いいねがすでにされている場合はいいねができない
     favorite.save
     redirect_to shops_path
   end

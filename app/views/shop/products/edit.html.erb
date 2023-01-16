@@ -30,7 +30,7 @@
         <th><%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name),prompt: "-- 選択してください --", required: true %></th>
       </tr>
       <tr>
-        <th></thc>
+        <th><%= link_to "削除",shop_product_path(@product.id), method: :delete,class: "btn btn-danger" %></th>
         <th><%= f.submit '変更を保存', class: "btn btn-success" %></th>
       </tr>
         <%= f.hidden_field :shop_id, :value => current_shop.id %>
