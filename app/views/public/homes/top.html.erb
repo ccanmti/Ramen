@@ -1,25 +1,24 @@
 <div class = "container">
   </div class = "row" >
-    <div class = "offset-2 col-8">
-      <div class="card img-container">
-        <%= image_tag 'ramen.jpg', style: "width: 100%; height: 200px; opacity: 0.5;" %>
+    <div class = "offset-1 col-10">
+      <div class="card img-container ">
+        <%= image_tag 'ramen.jpg', class:"img-fluid", alt:"Responsive image", style: "height: 200px; opacity: 0.5;" %>
         <div class="d-flex justify-content-center align-items-center card-img-overlay">
           <div class="text-center p-3 mb-2 ">
-          <font size="6" face="fantasy">Commu Ramenへようこそ</font></br>
-          <font size="6" face="fantasy">あなたが探す一品を、ここで探そう</font>
+          <font size="6" face="fantasy">Commu Ramenへようこそ</font>
           </div>
         </div>
       </div>
     </div>
-    <div class = "offset-2 col-12">
+    <div class = "col-12 mt-4 mb-4">
       <h2>New Shops</h2>
     </div>
 
-    <div class="offset-2 card-list-container ">
+    <div class=" col-sm card-list-container">
       <div class = "row o-gutters" >
       <% @shops.each do |shop| %>
-        <div class = "col-3">
-          <div class="card mx-auto mt-4 shadow-lg">
+        <div class = "col-sm-3">
+          <div class="card mb-5 mx-auto shadow-lg">
             <%= link_to shop_path(shop.id) do %>
             <%=image_tag shop.image, style: "width: 100%; height: 200px;" %>
             <% end %>
