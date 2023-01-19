@@ -1,9 +1,9 @@
 <div class = "container">
   <div class = "row">
-    <div class = "col-4">
-      <%=image_tag @shop.image, size: "280x280" %>
+    <div class = "col-lg-4 my-4">
+      <%=image_tag @shop.image, class:"img-fluid", alt:"Responsive image",style: "width: 100%;" %>
     </div>
-    <div class = "col-3">
+    <div class = "col-lg-3 my-4">
       <h4>店舗情報</h4>
       <table class = "table">
         <tr>
@@ -36,7 +36,7 @@
         </tr>
       </table>
     </div>
-    <div class = "col-5">
+    <div class = "col-xl-5 my-4">
       <h4>営業時間情報</h4>
       <div>
         <table class = "table">
@@ -157,9 +157,9 @@
       <h2>Menu</h2>
     </div>
     <% @products.each do |product| %>
-    <div class = "col-3">
+    <div class = "col-lg-3">
     <%= link_to product_path(product.id) do %>
-    <%=image_tag product.image, size: "200x200" %>
+    <%=image_tag product.image,class:"img-fluid p-3", alt:"Responsive image",style: "width: 100%;" %>
     <% end %>
       <table class = "table">
         <tr>
@@ -183,9 +183,9 @@
     </div>
     <% @items.each do |item| %>
       <% if item.is_active == true %>
-      <div class = "col-3">
+      <div class = "col-lg-3">
       <%= link_to item_path(item.id) do %>
-      <%=image_tag item.image, size: "200x200" %>
+      <%=image_tag item.image, class:"img-fluid", alt:"Responsive image",style: "width: 100%;" %>
       <% end %>
         <table class = "table">
           <tr>
