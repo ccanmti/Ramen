@@ -185,7 +185,7 @@
       <% if item.is_active == true %>
       <div class = "col-lg-3">
       <%= link_to item_path(item.id) do %>
-      <%=image_tag item.image, class:"img-fluid", alt:"Responsive image",style: "width: 100%;" %>
+      <%=image_tag item.image, class:"img-fluid p-3", alt:"Responsive image",style: "width: 100%;" %>
       <% end %>
         <table class = "table">
           <tr>
@@ -210,10 +210,15 @@
 <div class="offset-1 card-list-container ">
   <h2>新着コメント</h2>
   <div class = "row o-gutters" >
+
   <% @shop.shop_comments.each.each do |shop| %>
-    <div class = "col-3">
+    <div class = "col-lg-4">
       <div class="card mx-auto mt-4 shadow-lg">
-        <%=image_tag shop.customer.image, style: "width: 100%; height: 100px;" %>
+        <% if shop.customer.image.attached? %>
+          <%=image_tag shop.customer.image, class:"img-fluid p-3", alt:"Responsive image",style: "width: 100%;" %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', class:"img-fluid p-3", alt:"Responsive image",style: "width: 100%; height: 150px;" %>
+        <% end %>
         <div class="card-body">
           <table class = "table">
             <tr>
@@ -236,10 +241,10 @@
   </div>
 </div>
 <% if customer_signed_in? %>
-<div class = "mt-4 offset-3 col-12">
+<div class = "mt-4 col-8">
   <h2>コメント投稿</h2>
 </div>
-<div class = "mt-4 offset-3 col-5">
+<div class = "center-block">
     <%= form_with model: @shop_comment, url: shop_comments_path(@shop), method: :post do |f| %>
     <table class = "table">
       <tr>
