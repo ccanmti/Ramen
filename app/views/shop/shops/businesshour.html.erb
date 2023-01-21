@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <div class = "co-5">
-      <h2>営業時間作成</h2>
+      <h2>営業時間作成</h2><strong>※ ●が営業中 -が閉店中 </strong>
       <%= form_with model: @businesshour, url: shop_businesshours_path do |f|%>
       <table class = "table">
         <tr>
@@ -31,6 +31,7 @@
         </tr>
         <%= f.hidden_field :shop_id, value: current_shop.id %>
       </table>
+
       <%= f.submit "登録する" %>
       <% end %>
     </div>
