@@ -69,7 +69,7 @@ class Shop::ShopsController < ApplicationController
         end
       end
     end
-
+  
     #日曜日のshopの営業状況判断
     if Date.today.wday == 7
       @businesshours.each do |businesshour|
@@ -80,7 +80,7 @@ class Shop::ShopsController < ApplicationController
         end
       end
     end
-
+  
   end
 
   def edit
