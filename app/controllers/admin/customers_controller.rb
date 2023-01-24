@@ -21,5 +21,4 @@ class Admin::CustomersController < ApplicationController
     @customer.update(is_deleted: false)        #is_deletedをfalseにすることで復会になる
     redirect_to admin_customers_path
   end
-
 end
