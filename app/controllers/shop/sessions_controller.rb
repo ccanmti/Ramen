@@ -4,7 +4,6 @@ class Shop::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
     before_action :shop_state, only: [:create]
 
-
   def shop_state
     @shop = Shop.find_by(email: params[:shop][:email])
     return if !@shop
