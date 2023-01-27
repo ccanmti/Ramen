@@ -24,7 +24,7 @@ class Admin::GenresController < ApplicationController
     redirect_to admin_genres_path
   end
 
-  # 管理者側のジャンルの
+  # 管理者側のジャンルの削除
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
